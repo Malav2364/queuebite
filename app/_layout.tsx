@@ -8,6 +8,7 @@ import { PortalHost } from '@rn-primitives/portal';
 import { Stack } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
 import { StatusBar } from 'expo-status-bar';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { useColorScheme } from 'nativewind';
 import * as React from 'react';
 
@@ -22,13 +23,15 @@ export default function RootLayout() {
   const { colorScheme } = useColorScheme();
 
   return (
-    <ClerkProvider publishableKey={publishableKey} tokenCache={tokenCache}>
-      <ThemeProvider value={NAV_THEME[colorScheme ?? 'light']}>
-        <StatusBar style={colorScheme === 'dark' ? 'light' : 'dark'} />
-        <Routes />
-        <PortalHost />
-      </ThemeProvider>
-    </ClerkProvider>
+    <SafeAreaProvider>
+      <ClerkProvider publishableKey={publishableKey} tokenCache={tokenCache}>
+        <ThemeProvider value={NAV_THEME[colorScheme ?? 'light']}>
+          <StatusBar style={colorScheme === 'dark' ? 'light' : 'dark'} />
+          <Routes />
+          <PortalHost />
+        </ThemeProvider>
+      </ClerkProvider>
+    </SafeAreaProvider>
   );
 }
 
@@ -58,9 +61,10 @@ function Routes() {
   }
 
   return (
-    <Stack>
+    <Stack screenOptions={{ headerShown: false }}>
       {/* Screens only shown when the user is NOT signed in */}
-      <Stack.Protected guard={!isSignedIn}>
+      <Stack.Protected guard={!isSignedIn} redirectTo="/">
+        <Stack.Screen name="(auth)/welcome" options={WELCOME_SCREEN_OPTIONS} />
         <Stack.Screen name="(auth)/sign-in" options={SIGN_IN_SCREEN_OPTIONS} />
         <Stack.Screen name="(auth)/sign-up" options={SIGN_UP_SCREEN_OPTIONS} />
         <Stack.Screen name="(auth)/reset-password" options={DEFAULT_AUTH_SCREEN_OPTIONS} />
@@ -68,7 +72,7 @@ function Routes() {
       </Stack.Protected>
 
       {/* Screens only shown when the user IS signed in */}
-      <Stack.Protected guard={isSignedIn}>
+      <Stack.Protected guard={isSignedIn} redirectTo="/(auth)/welcome">
         <Stack.Screen name="index" />
       </Stack.Protected>
 
@@ -77,16 +81,18 @@ function Routes() {
   );
 }
 
+const WELCOME_SCREEN_OPTIONS = {
+  headerShown: false,
+};
+
 const SIGN_IN_SCREEN_OPTIONS = {
   headerShown: false,
   title: 'Sign in',
 };
 
 const SIGN_UP_SCREEN_OPTIONS = {
-  presentation: 'modal',
-  title: '',
-  headerTransparent: true,
-  gestureEnabled: false,
+  headerShown: false,
+  title: 'Sign up',
 } as const;
 
 const DEFAULT_AUTH_SCREEN_OPTIONS = {

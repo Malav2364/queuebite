@@ -5,8 +5,7 @@ import { Label } from '@/components/ui/label';
 import { Text } from '@/components/ui/text';
 import { cn } from '@/lib/utils';
 import { useSignIn } from '@clerk/expo';
-import { router } from 'expo-router';
-import { useLocalSearchParams } from 'expo-router/build/hooks';
+import { router, useLocalSearchParams } from 'expo-router';
 import * as React from 'react';
 import { View } from 'react-native';
 

@@ -27,7 +27,7 @@ function Label({
       disabled={disabled}>
       <LabelPrimitive.Text
         className={cn(
-          'text-foreground text-sm font-medium',
+          'text-neutral-800 text-sm font-medium',
           Platform.select({ web: 'leading-none' }),
           className
         )}

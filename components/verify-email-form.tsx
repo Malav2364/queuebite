@@ -40,10 +40,27 @@ export function VerifyEmailForm() {
         await signUp.finalize();
         return;
       }
-      // TODO: Handle other statuses
-      // If the status is not complete, check why. User may need to
-      // complete further steps.
-      console.error(JSON.stringify(signUp, null, 2));
+
+      // If status is not complete, check missing or unverified fields
+      const missingFields = signUp.missingFields?.join(', ');
+      const unverifiedFields = signUp.unverifiedFields?.join(', ');
+      const details = [
+        missingFields ? `Missing: ${missingFields}` : null,
+        unverifiedFields ? `Unverified: ${unverifiedFields}` : null,
+      ]
+        .filter(Boolean)
+        .join('; ');
+
+      console.error('Sign-up status:', signUp.status, {
+        missingFields: signUp.missingFields,
+        unverifiedFields: signUp.unverifiedFields,
+      });
+
+      setError(
+        details
+          ? `Sign up incomplete. Required: ${details}`
+          : `Sign up incomplete (Status: ${signUp.status})`
+      );
     } catch (err) {
       // See https://go.clerk.com/mRUDrIe for more info on error handling
       setError(err instanceof Error ? err.message : 'Something went wrong');
@@ -70,14 +87,14 @@ export function VerifyEmailForm() {
 
   return (
     <View className="gap-6">
-      <Card className="border-border/0 shadow-none sm:border-border sm:shadow-sm sm:shadow-black/5">
-        <CardHeader>
+      <Card className="bg-transparent border-0 shadow-none py-0">
+        <CardHeader className="pt-0 px-0">
           <CardTitle className="text-center text-xl sm:text-left">Verify your email</CardTitle>
           <CardDescription className="text-center sm:text-left">
             Enter the verification code sent to {email || 'your email'}
           </CardDescription>
         </CardHeader>
-        <CardContent className="gap-6">
+        <CardContent className="gap-6 px-0 pb-0">
           <View className="gap-6">
             <View className="gap-1.5">
               <Label htmlFor="code">Verification code</Label>
@@ -109,7 +126,7 @@ export function VerifyEmailForm() {
               <Button className={cn("w-full", fetchStatus === 'fetching' && 'opacity-50')} onPress={onSubmit}>
                 <Text>Continue</Text>
               </Button>
-              <Button variant="link" className="mx-auto" onPress={router.back}>
+              <Button variant="link" className="mx-auto" onPress={() => router.back()}>
                 <Text>Cancel</Text>
               </Button>
             </View>

@@ -6,13 +6,13 @@ import { Text } from '@/components/ui/text';
 import { cn } from '@/lib/utils';
 import { useSignIn } from '@clerk/expo';
 import * as React from 'react';
-import { TextInput, View } from 'react-native';
+import { type TextInputInstance, View } from 'react-native';
 
 export function ResetPasswordForm() {
   const { signIn, fetchStatus } = useSignIn();
   const [password, setPassword] = React.useState('');
   const [code, setCode] = React.useState('');
-  const codeInputRef = React.useRef<TextInput>(null);
+  const codeInputRef = React.useRef<TextInputInstance>(null);
   const [error, setError] = React.useState({ code: '', password: '' });
 
   async function onSubmit() {

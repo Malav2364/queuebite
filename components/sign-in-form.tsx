@@ -9,13 +9,15 @@ import { cn } from '@/lib/utils';
 import { useSignIn } from '@clerk/expo';
 import { Link } from 'expo-router';
 import * as React from 'react';
-import { type TextInput, View } from 'react-native';
+import { Image, type TextInputInstance, View } from 'react-native';
+
+import { MailIcon, LockIcon, ArrowRightIcon } from 'lucide-react-native';
 
 export function SignInForm() {
   const { signIn, fetchStatus } = useSignIn();
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
-  const passwordInputRef = React.useRef<TextInput>(null);
+  const passwordInputRef = React.useRef<TextInputInstance>(null);
   const [error, setError] = React.useState<{ email?: string; password?: string }>({});
 
   async function onSubmit() {
@@ -68,72 +70,105 @@ export function SignInForm() {
   }
 
   return (
-    <View className="gap-6">
-      <Card className="border-border/0 shadow-none sm:border-border sm:shadow-sm sm:shadow-black/5">
-        <CardHeader>
-          <CardTitle className="text-center text-xl sm:text-left">Sign in to queuebite</CardTitle>
-          <CardDescription className="text-center sm:text-left">
+    <View className="gap-2">
+      <Card className="bg-transparent border-0 shadow-none py-0">
+        <CardHeader className="items-start pt-0 px-0 pb-1.5 gap-1">
+          <Image
+            source={require('@/assets/images/queuebite-logo.png')}
+            style={{ width: 195, height: 68, resizeMode: 'contain', marginBottom: 2 }}
+            alt="QueueBite"
+          />
+          <CardTitle className="text-left text-2xl font-bold tracking-tight text-neutral-900">
+            Sign in to QueueBite
+          </CardTitle>
+          <CardDescription className="text-left text-neutral-500 text-xs">
             Welcome back! Please sign in to continue
           </CardDescription>
         </CardHeader>
-        <CardContent className="gap-6">
-          <View className="gap-6">
+        <CardContent className="gap-4 px-0 pb-0">
+          <View className="gap-4">
+            {/* Email Field with Icon */}
             <View className="gap-1.5">
-              <Label htmlFor="email">Email</Label>
-              <Input
-                id="email"
-                placeholder="m@example.com"
-                keyboardType="email-address"
-                autoComplete="email"
-                autoCapitalize="none"
-                onChangeText={setEmail}
-                onSubmitEditing={onEmailSubmitEditing}
-                returnKeyType="next"
-                submitBehavior="submit"
-              />
+              <Label htmlFor="email" className="text-neutral-900 font-bold text-sm">Email</Label>
+              <View className="relative flex-row items-center">
+                <View className="absolute left-3.5 z-10">
+                  <MailIcon size={18} color="#9ca3af" />
+                </View>
+                <Input
+                  id="email"
+                  className="pl-10 h-12 bg-white rounded-xl border-neutral-200 text-neutral-900 text-base"
+                  placeholder="m@example.com"
+                  placeholderTextColor="#9ca3af"
+                  keyboardType="email-address"
+                  autoComplete="email"
+                  autoCapitalize="none"
+                  onChangeText={setEmail}
+                  onSubmitEditing={onEmailSubmitEditing}
+                  returnKeyType="next"
+                  submitBehavior="submit"
+                />
+              </View>
               {error.email ? (
-                <Text className="text-sm font-medium text-destructive">{error.email}</Text>
+                <Text className="text-xs font-medium text-destructive">{error.email}</Text>
               ) : null}
             </View>
+
+            {/* Password Field with Icon and Red Forgot Password */}
             <View className="gap-1.5">
-              <View className="flex-row items-center">
-                <Label htmlFor="password">Password</Label>
+              <View className="flex-row items-center justify-between">
+                <Label htmlFor="password" className="text-neutral-900 font-bold text-sm">Password</Label>
                 <Link asChild href={`/(auth)/forgot-password?email=${email}`}>
                   <Button
                     variant="link"
                     size="sm"
-                    className="ml-auto h-4 px-1 py-0 web:h-fit sm:h-4">
-                    <Text className="font-normal leading-4">Forgot your password?</Text>
+                    className="h-auto p-0">
+                    <Text className="text-xs font-semibold text-[#d94148]">Forgot your password?</Text>
                   </Button>
                 </Link>
               </View>
-              <Input
-                ref={passwordInputRef}
-                id="password"
-                secureTextEntry
-                onChangeText={setPassword}
-                returnKeyType="send"
-                onSubmitEditing={onSubmit}
-              />
+              <View className="relative flex-row items-center">
+                <View className="absolute left-3.5 z-10">
+                  <LockIcon size={18} color="#9ca3af" />
+                </View>
+                <Input
+                  ref={passwordInputRef}
+                  id="password"
+                  className="pl-10 h-12 bg-white rounded-xl border-neutral-200 text-neutral-900 text-base"
+                  secureTextEntry
+                  onChangeText={setPassword}
+                  returnKeyType="send"
+                  onSubmitEditing={onSubmit}
+                />
+              </View>
               {error.password ? (
-                <Text className="text-sm font-medium text-destructive">{error.password}</Text>
+                <Text className="text-xs font-medium text-destructive">{error.password}</Text>
               ) : null}
             </View>
-            <Button className={cn("w-full", fetchStatus === 'fetching' && 'opacity-50')} onPress={onSubmit}>
-              <Text>Continue</Text>
+
+            {/* Dark Continue Button with Arrow */}
+            <Button
+              className={cn("w-full h-12 rounded-2xl bg-[#1c1c1e] active:bg-neutral-800 flex-row items-center justify-center gap-2 mt-1 shadow-sm", fetchStatus === 'fetching' && 'opacity-50')}
+              onPress={onSubmit}>
+              <Text className="text-white font-semibold text-base">Continue</Text>
+              <ArrowRightIcon size={18} color="white" />
             </Button>
           </View>
-          <Text className="text-center text-sm">
+
+          {/* Don't have an account? Sign up centered */}
+          <Text className="text-center text-xs text-neutral-700">
             Don&apos;t have an account?{' '}
-            <Link href="/(auth)/sign-up" className="text-sm underline underline-offset-4">
+            <Link href="/(auth)/sign-up" className="text-xs font-semibold text-[#d94148]">
               Sign up
             </Link>
           </Text>
-          <View className="flex-row items-center">
-            <Separator className="flex-1" />
-            <Text className="px-4 text-sm text-muted-foreground">or</Text>
-            <Separator className="flex-1" />
+
+          {/* Divider */}
+          <View className="flex-row items-center py-0.5">
+            <Separator className="flex-1 bg-neutral-200" />
+            <Text className="px-3 text-xs text-neutral-400 font-normal">or</Text>
+            <Separator className="flex-1 bg-neutral-200" />
           </View>
+
           <SocialConnections />
         </CardContent>
       </Card>

@@ -8,6 +8,7 @@ import { MoonStarIcon, XIcon, SunIcon } from 'lucide-react-native';
 import { useColorScheme } from 'nativewind';
 import * as React from 'react';
 import { Image, type ImageStyle, View } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 const LOGO = {
   light: require('@/assets/images/react-native-reusables-light.png'),
@@ -24,13 +25,21 @@ const LOGO_STYLE: ImageStyle = {
   width: 40,
 };
 
-const SCREEN_OPTIONS = {
-  header: () => (
-    <View className="top-safe absolute left-0 right-0 flex-row justify-between px-4 py-2 web:mx-2">
+function ScreenHeader() {
+  const insets = useSafeAreaInsets();
+
+  return (
+    <View
+      style={{ paddingTop: Math.max(insets.top, 16) + 4 }}
+      className="absolute left-0 right-0 z-50 flex-row justify-between px-4 pb-2 web:mx-2">
       <ThemeToggle />
       <UserMenu />
     </View>
-  ),
+  );
+}
+
+const SCREEN_OPTIONS = {
+  header: () => <ScreenHeader />,
 };
 
 export default function Screen() {
