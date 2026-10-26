@@ -74,6 +74,21 @@ function Routes() {
       {/* Screens only shown when the user IS signed in */}
       <Stack.Protected guard={isSignedIn} redirectTo="/(auth)/welcome">
         <Stack.Screen name="index" />
+        <Stack.Screen name="explore" options={{ headerShown: false }} />
+        <Stack.Screen name="search" options={{ headerShown: false }} />
+        <Stack.Screen name="search-results" options={{ headerShown: false }} />
+        <Stack.Screen name="saved" options={{ headerShown: false }} />
+        <Stack.Screen name="trending" options={{ headerShown: false }} />
+        <Stack.Screen name="cuisine/[id]" options={{ headerShown: false }} />
+        <Stack.Screen name="restaurant/[id]" options={{ headerShown: false }} />
+        <Stack.Screen name="restaurant/[id]/menu" options={{ headerShown: false }} />
+        <Stack.Screen name="restaurant/[id]/dish/[dishId]" options={{ headerShown: false }} />
+        <Stack.Screen name="restaurant/[id]/reviews" options={{ headerShown: false }} />
+        <Stack.Screen name="restaurant/[id]/photos" options={{ headerShown: false }} />
+        <Stack.Screen name="restaurant/join" options={{ headerShown: false }} />
+        <Stack.Screen name="restaurant/confirm" options={{ headerShown: false }} />
+        <Stack.Screen name="restaurant/live-queue" options={{ headerShown: false }} />
+        <Stack.Screen name="restaurant/table-ready" options={{ headerShown: false }} />
       </Stack.Protected>
 
       {/* Screens outside the guards are accessible to everyone (e.g. not found) */}
