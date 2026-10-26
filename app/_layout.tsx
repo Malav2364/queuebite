@@ -89,6 +89,37 @@ function Routes() {
         <Stack.Screen name="restaurant/confirm" options={{ headerShown: false }} />
         <Stack.Screen name="restaurant/live-queue" options={{ headerShown: false }} />
         <Stack.Screen name="restaurant/table-ready" options={{ headerShown: false }} />
+        <Stack.Screen name="queue/overview" options={{ headerShown: false }} />
+        <Stack.Screen name="queue/edit-party" options={{ headerShown: false }} />
+        <Stack.Screen name="queue/special-requests" options={{ headerShown: false }} />
+        <Stack.Screen name="queue/leave-confirm" options={{ headerShown: false }} />
+        <Stack.Screen name="queue/cancelled" options={{ headerShown: false }} />
+        <Stack.Screen name="queue/nearly-up" options={{ headerShown: false }} />
+        <Stack.Screen name="queue/expired" options={{ headerShown: false }} />
+        <Stack.Screen name="queue/history" options={{ headerShown: false }} />
+        <Stack.Screen name="queue/[id]" options={{ headerShown: false }} />
+        <Stack.Screen name="notifications" options={{ headerShown: false }} />
+        <Stack.Screen name="group/create" options={{ headerShown: false }} />
+        <Stack.Screen name="group/join" options={{ headerShown: false }} />
+        <Stack.Screen name="group/[id]" options={{ headerShown: false }} />
+        <Stack.Screen name="group/invite" options={{ headerShown: false }} />
+        <Stack.Screen name="group/readiness" options={{ headerShown: false }} />
+        <Stack.Screen name="group/queue" options={{ headerShown: false }} />
+        <Stack.Screen name="group/members" options={{ headerShown: false }} />
+        <Stack.Screen name="group/history" options={{ headerShown: false }} />
+        <Stack.Screen name="order/menu" options={{ headerShown: false }} />
+        <Stack.Screen name="order/customize/[id]" options={{ headerShown: false }} />
+        <Stack.Screen name="order/cart" options={{ headerShown: false }} />
+        <Stack.Screen name="order/timing" options={{ headerShown: false }} />
+        <Stack.Screen name="order/review" options={{ headerShown: false }} />
+        <Stack.Screen name="order/confirmation" options={{ headerShown: false }} />
+        <Stack.Screen name="order/tracking/[id]" options={{ headerShown: false }} />
+        <Stack.Screen name="order/history" options={{ headerShown: false }} />
+        <Stack.Screen name="order/reorder" options={{ headerShown: false }} />
+        <Stack.Screen name="order/cancel" options={{ headerShown: false }} />
+        <Stack.Screen name="order/payment-method" options={{ headerShown: false }} />
+        <Stack.Screen name="order/payment-status" options={{ headerShown: false }} />
+        <Stack.Screen name="order/refund-status" options={{ headerShown: false }} />
       </Stack.Protected>
 
       {/* Screens outside the guards are accessible to everyone (e.g. not found) */}

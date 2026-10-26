@@ -28,6 +28,7 @@ import {
   MapPinOffIcon,
   RefreshCwIcon,
   SparklesIcon,
+  UsersIcon,
 } from 'lucide-react-native';
 import * as React from 'react';
 import {
@@ -240,15 +241,10 @@ export default function HomeScreen() {
         location={location}
         onOpenLocationModal={() => setIsLocationModalVisible(true)}
         onNotificationPress={() => {
-          Alert.alert(
-            'Notifications',
-            activeQueue
-              ? `You are #${activeQueue.partiesAhead + 1} in line at ${activeQueue.restaurantName}. Estimated wait: ${activeQueue.waitRange}.`
-              : 'No pending queue notifications. Explore nearby restaurants to join a waitlist!'
-          );
+          router.push('/notifications');
         }}
         onProfilePress={() => setActiveTab('PROFILE')}
-        hasUnreadNotifications={activeQueue !== null}
+        hasUnreadNotifications={true}
       />
 
       {/* Main Scroll Content */}
@@ -420,6 +416,44 @@ export default function HomeScreen() {
             <MapDiscoveryCard
               onOpenMap={() => setActiveTab('MAP')}
             />
+
+            {/* Group Dining Feature Card */}
+            <View className="px-5 my-3">
+              <View className="bg-gradient-to-r from-red-600 to-rose-700 bg-[#dc2626] rounded-3xl p-5 shadow-md shadow-red-500/20">
+                <View className="flex-row items-center justify-between mb-2">
+                  <View className="flex-row items-center gap-2">
+                    <UsersIcon size={18} color="#ffffff" />
+                    <Text className="text-xs font-black text-white uppercase tracking-wider">
+                      Group Dining Mode
+                    </Text>
+                  </View>
+                  <View className="px-2.5 py-0.5 rounded-full bg-white/20">
+                    <Text className="text-[10px] font-bold text-white">Smart Sync</Text>
+                  </View>
+                </View>
+
+                <Text className="text-lg font-black text-white tracking-tight">
+                  Dining out with friends or family?
+                </Text>
+                <Text className="text-xs text-red-100 mt-0.5 leading-relaxed">
+                  Coordinate party arrivals, sync your live queue ticket, and get seated together with zero confusion.
+                </Text>
+
+                <View className="flex-row gap-2.5 mt-4">
+                  <Pressable
+                    onPress={() => router.push('/group/create')}
+                    className="flex-1 py-2.5 rounded-xl bg-white items-center justify-center active:bg-neutral-100">
+                    <Text className="text-xs font-black text-[#dc2626]">Create Group</Text>
+                  </Pressable>
+
+                  <Pressable
+                    onPress={() => router.push('/group/join')}
+                    className="flex-1 py-2.5 rounded-xl bg-black/25 border border-white/30 items-center justify-center active:bg-black/40">
+                    <Text className="text-xs font-black text-white">Join via Code</Text>
+                  </Pressable>
+                </View>
+              </View>
+            </View>
 
             {/* 7. Trending This Week */}
             <TrendingThisWeek
