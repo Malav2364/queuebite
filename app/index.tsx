@@ -13,6 +13,8 @@ import { RestaurantCard } from '@/components/restaurant-card';
 import { SearchAndFilterBar } from '@/components/search-and-filter-bar';
 import { TrendingThisWeek } from '@/components/trending-this-week';
 import { Text } from '@/components/ui/text';
+import { api } from '@/lib/api';
+import { useQueueSocket } from '@/lib/socket';
 import {
   MOCK_ACTIVE_QUEUE,
   MOCK_POPULAR_RESTAURANTS,
@@ -55,8 +57,72 @@ export default function HomeScreen() {
     });
   }
 
-  // State: Active Queue Entry (State-driven design: toggleable between active queue card and promo banner)
+  // State: Active Queue Entry
   const [activeQueue, setActiveQueue] = React.useState<ActiveQueueEntry | null>(null);
+
+  // State: Live restaurants from backend with local fallback
+  const [restaurants, setRestaurants] = React.useState<Restaurant[]>(MOCK_RESTAURANTS);
+  const [isLoadingRestaurants, setIsLoadingRestaurants] = React.useState(false);
+
+  // Load restaurants from backend API
+  const loadRestaurants = React.useCallback(async () => {
+    try {
+      setIsLoadingRestaurants(true);
+      const data = await api.getRestaurants();
+      if (data && data.length > 0) {
+        setRestaurants(data);
+      }
+    } catch (err) {
+      console.log('Using local restaurant fallback:', err);
+    } finally {
+      setIsLoadingRestaurants(false);
+    }
+  }, []);
+
+  React.useEffect(() => {
+    loadRestaurants();
+  }, [loadRestaurants]);
+
+  // Sync Clerk authenticated user with backend database
+  React.useEffect(() => {
+    if (user?.id && user?.primaryEmailAddress?.emailAddress) {
+      api.syncUser({
+        clerkId: user.id,
+        email: user.primaryEmailAddress.emailAddress,
+        name: user.fullName || user.firstName,
+        phone: user.primaryPhoneNumber?.phoneNumber,
+        avatarUrl: user.imageUrl,
+      }).catch((err) => {
+        console.log('User sync error:', err);
+      });
+    }
+  }, [user?.id, user?.primaryEmailAddress?.emailAddress]);
+
+  // Real-time Queue Socket: receives live position recalculations and table ready alerts
+  useQueueSocket(activeQueue?.id, {
+    onPositionUpdated: (update) => {
+      setActiveQueue((prev) =>
+        prev
+          ? {
+              ...prev,
+              partiesAhead: update.partiesAhead ?? prev.partiesAhead,
+              waitRange: `${update.estimatedWaitMinutes || 15}–${(update.estimatedWaitMinutes || 15) + 8} min`,
+              updatedAgo: 'Live',
+            }
+          : null
+      );
+    },
+    onCalled: (call) => {
+      setActiveQueue((prev) => (prev ? { ...prev, status: 'NOTIFIED' } : null));
+      Alert.alert(
+        'Table Ready!',
+        call.message || 'Your table is ready! Please proceed to the host stand.'
+      );
+    },
+    onSeated: () => {
+      setActiveQueue((prev) => (prev ? { ...prev, status: 'SEATED' } : null));
+    },
+  });
 
   // State: Location (Vadodara default as shown in mock, GPS or manual pincode fallback)
   const [location, setLocation] = React.useState<UserLocation>({
@@ -123,7 +189,7 @@ export default function HomeScreen() {
   // Handle pull-to-refresh
   async function onRefresh() {
     setRefreshing(true);
-    await new Promise((resolve) => setTimeout(resolve, 800));
+    await loadRestaurants();
     setRefreshing(false);
   }
 
@@ -149,39 +215,60 @@ export default function HomeScreen() {
     setIsJoinModalVisible(true);
   }
 
-  // Confirm join queue
-  function handleConfirmJoinQueue(partySizeChosen: number) {
+  // Confirm join queue with live backend API
+  async function handleConfirmJoinQueue(partySizeChosen: number) {
     if (!selectedRestaurantForQueue) return;
 
-    const newActiveQueue: ActiveQueueEntry = {
-      id: `q-${Date.now()}`,
-      restaurantId: selectedRestaurantForQueue.id,
-      restaurantName: selectedRestaurantForQueue.name,
-      restaurantImage: selectedRestaurantForQueue.image,
-      status: 'WAITING',
-      waitRange: selectedRestaurantForQueue.waitRange,
-      updatedAgo: 'Just now',
-      partiesAhead: selectedRestaurantForQueue.partiesInQueue,
-      partySize: partySizeChosen,
-      joinedAt: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
-      estimatedSeatingTime: new Date(
-        Date.now() + (selectedRestaurantForQueue.waitMinutesEstimated || 20) * 60000
-      ).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
-    };
+    try {
+      const guestName = user?.fullName || user?.firstName || 'Guest';
+      const guestPhone = user?.primaryPhoneNumber?.phoneNumber || '+919876543210';
 
-    setActiveQueue(newActiveQueue);
-    setIsJoinModalVisible(false);
+      const entry = await api.joinQueue(selectedRestaurantForQueue.id, {
+        guestName,
+        guestPhone,
+        partySize: partySizeChosen,
+      });
 
-    Alert.alert(
-      'You are in line!',
-      `You have joined the queue at ${selectedRestaurantForQueue.name}. Estimated wait is ${selectedRestaurantForQueue.waitRange}. We’ll notify you when your table is getting ready!`,
-      [{ text: 'Great!' }]
-    );
+      setActiveQueue(entry);
+      setIsJoinModalVisible(false);
+
+      Alert.alert(
+        'You are in line!',
+        `You have joined the queue at ${selectedRestaurantForQueue.name}. Your spot is #${entry.partiesAhead + 1}. Live updates are connected!`,
+        [{ text: 'Great!' }]
+      );
+    } catch (err: any) {
+      // Fallback local queue entry if offline
+      const newActiveQueue: ActiveQueueEntry = {
+        id: `q-${Date.now()}`,
+        restaurantId: selectedRestaurantForQueue.id,
+        restaurantName: selectedRestaurantForQueue.name,
+        restaurantImage: selectedRestaurantForQueue.image,
+        status: 'WAITING',
+        waitRange: selectedRestaurantForQueue.waitRange,
+        updatedAgo: 'Just now',
+        partiesAhead: selectedRestaurantForQueue.partiesInQueue,
+        partySize: partySizeChosen,
+        joinedAt: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+        estimatedSeatingTime: new Date(
+          Date.now() + (selectedRestaurantForQueue.waitMinutesEstimated || 20) * 60000
+        ).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+      };
+
+      setActiveQueue(newActiveQueue);
+      setIsJoinModalVisible(false);
+
+      Alert.alert(
+        'You are in line!',
+        `You have joined the queue at ${selectedRestaurantForQueue.name}. Estimated wait is ${selectedRestaurantForQueue.waitRange}.`,
+        [{ text: 'Great!' }]
+      );
+    }
   }
 
   // Filter restaurants based on search, cuisine, and chips
   const filteredRestaurants = React.useMemo(() => {
-    return MOCK_RESTAURANTS.filter((r) => {
+    return restaurants.filter((r) => {
       // Search text query
       if (searchQuery.trim().length > 0) {
         const query = searchQuery.toLowerCase();

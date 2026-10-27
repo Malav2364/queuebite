@@ -3,6 +3,7 @@ import { BrandLogo } from '@/components/brand-logo';
 import { FloatingQueueWidget } from '@/components/floating-queue-widget';
 import { LocationModal } from '@/components/location-modal';
 import { Text } from '@/components/ui/text';
+import { api } from '@/lib/api';
 import { MOCK_RESTAURANTS } from '@/lib/mock-data';
 import { Restaurant } from '@/types/queuebite';
 import { useRouter } from 'expo-router';
@@ -285,15 +286,28 @@ export default function ExploreScreen() {
     });
   }
 
+  // Live restaurants from backend
+  const [restaurants, setRestaurants] = React.useState<Restaurant[]>(MOCK_RESTAURANTS);
+
+  React.useEffect(() => {
+    api.getRestaurants()
+      .then((data) => {
+        if (data && data.length > 0) {
+          setRestaurants(data);
+        }
+      })
+      .catch((err) => console.log('Using local fallback in explore:', err));
+  }, []);
+
   // Currently selected restaurant for map card
   const selectedRestaurant: Restaurant = React.useMemo(() => {
-    const found = MOCK_RESTAURANTS.find((r) => r.id === selectedPinId);
-    return found || MOCK_RESTAURANTS[0];
-  }, [selectedPinId]);
+    const found = restaurants.find((r) => r.id === selectedPinId);
+    return found || restaurants[0] || MOCK_RESTAURANTS[0];
+  }, [restaurants, selectedPinId]);
 
   // Filter & sort logic
   const filteredRestaurants = React.useMemo(() => {
-    let list = [...MOCK_RESTAURANTS];
+    let list = [...restaurants];
 
     // 1. Search Query
     if (searchQuery.trim().length > 0) {

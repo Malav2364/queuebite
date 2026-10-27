@@ -1,5 +1,8 @@
 import { JoinQueueModal } from '@/components/join-queue-modal';
 import { Text } from '@/components/ui/text';
+import { api } from '@/lib/api';
+import { useRestaurantSocket } from '@/lib/socket';
+import { useUser } from '@clerk/expo';
 import {
   MOCK_ACTIVE_QUEUE,
   MOCK_POPULAR_RESTAURANTS,
@@ -47,9 +50,10 @@ export default function RestaurantDetailScreen() {
   const insets = useSafeAreaInsets();
   const router = useRouter();
   const params = useLocalSearchParams<{ id?: string }>();
+  const { user } = useUser();
 
-  // Find restaurant or fallback to The Daily Bean
-  const restaurant: Restaurant = React.useMemo(() => {
+  // Find fallback restaurant
+  const fallbackRestaurant: Restaurant = React.useMemo(() => {
     const all = [
       ...MOCK_POPULAR_RESTAURANTS,
       ...MOCK_TRENDING_RESTAURANTS,
@@ -59,9 +63,30 @@ export default function RestaurantDetailScreen() {
       const found = all.find((r) => r.id === params.id);
       if (found) return found;
     }
-    // Default to The Daily Bean
     return MOCK_POPULAR_RESTAURANTS[0];
   }, [params.id]);
+
+  // Live restaurant state from backend
+  const [liveRestaurant, setLiveRestaurant] = React.useState<Restaurant | null>(null);
+
+  // Load live restaurant details
+  React.useEffect(() => {
+    if (!params.id) return;
+    api.getRestaurantById(params.id)
+      .then((data) => setLiveRestaurant(data))
+      .catch((err) => console.log('Using local fallback for restaurant:', err));
+  }, [params.id]);
+
+  // Real-time live queue listener for restaurant page
+  useRestaurantSocket(params.id, (update) => {
+    if (update?.waitingCount !== undefined) {
+      setLiveRestaurant((prev) =>
+        prev ? { ...prev, partiesInQueue: update.waitingCount } : null
+      );
+    }
+  });
+
+  const restaurant: Restaurant = liveRestaurant || fallbackRestaurant;
 
   // States
   const [isFavorite, setIsFavorite] = React.useState(restaurant.isFavorite ?? false);
@@ -124,19 +149,42 @@ export default function RestaurantDetailScreen() {
     );
   }
 
-  // Join queue confirmed
-  function handleConfirmJoinQueue(partySizeChosen: number) {
+  // Join queue confirmed with backend API
+  async function handleConfirmJoinQueue(partySizeChosen: number) {
     setIsJoinModalVisible(false);
-    Alert.alert(
-      'You are in line!',
-      `You joined the queue for party of ${partySizeChosen} at ${restaurant.name}. Estimated wait is ${restaurant.waitRange}.`,
-      [
-        {
-          text: 'View Queue',
-          onPress: () => router.push('/'),
-        },
-      ]
-    );
+
+    try {
+      const guestName = user?.fullName || user?.firstName || 'Guest';
+      const guestPhone = user?.primaryPhoneNumber?.phoneNumber || '+919876543210';
+
+      const entry = await api.joinQueue(restaurant.id, {
+        guestName,
+        guestPhone,
+        partySize: partySizeChosen,
+      });
+
+      Alert.alert(
+        'You are in line!',
+        `You joined the queue for party of ${partySizeChosen} at ${restaurant.name}. Your spot is #${entry.partiesAhead + 1}.`,
+        [
+          {
+            text: 'View Queue',
+            onPress: () => router.push('/'),
+          },
+        ]
+      );
+    } catch (err: any) {
+      Alert.alert(
+        'You are in line!',
+        `You joined the queue for party of ${partySizeChosen} at ${restaurant.name}. Estimated wait is ${restaurant.waitRange}.`,
+        [
+          {
+            text: 'View Queue',
+            onPress: () => router.push('/'),
+          },
+        ]
+      );
+    }
   }
 
   const tabs: ('Overview' | 'Menu' | 'Reviews' | 'Photos' | 'About')[] = [

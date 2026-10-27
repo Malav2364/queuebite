@@ -1,5 +1,8 @@
 import { BrandLogo } from '@/components/brand-logo';
 import { Text } from '@/components/ui/text';
+import { api } from '@/lib/api';
+import { useQueueSocket } from '@/lib/socket';
+import { ActiveQueueEntry } from '@/types/queuebite';
 import { MOCK_POPULAR_RESTAURANTS } from '@/lib/mock-data';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import {
@@ -40,14 +43,48 @@ export default function QueueDetailsScreen() {
   const router = useRouter();
   const params = useLocalSearchParams<{ id?: string }>();
 
+  const [liveEntry, setLiveEntry] = React.useState<ActiveQueueEntry | null>(null);
+
+  React.useEffect(() => {
+    if (!params.id) return;
+    api.getQueueEntry(params.id)
+      .then((data) => setLiveEntry(data))
+      .catch((err) => console.log('Using local fallback for queue entry:', err));
+  }, [params.id]);
+
+  useQueueSocket(params.id, {
+    onPositionUpdated: (update) => {
+      setLiveEntry((prev) =>
+        prev
+          ? {
+              ...prev,
+              partiesAhead: update.partiesAhead ?? prev.partiesAhead,
+              waitRange: `${update.estimatedWaitMinutes || 15}–${(update.estimatedWaitMinutes || 15) + 8} min`,
+              updatedAgo: 'Live',
+            }
+          : null
+      );
+    },
+    onCalled: (call) => {
+      setLiveEntry((prev) => (prev ? { ...prev, status: 'NOTIFIED' } : null));
+      Alert.alert(
+        'Table Ready!',
+        call.message || 'Your table is ready! Please proceed to the host stand.'
+      );
+    },
+    onSeated: () => {
+      setLiveEntry((prev) => (prev ? { ...prev, status: 'SEATED' } : null));
+    },
+  });
+
   const restaurant =
-    MOCK_POPULAR_RESTAURANTS.find((r) => r.id === params.id) ||
+    MOCK_POPULAR_RESTAURANTS.find((r) => r.id === (liveEntry?.restaurantId || params.id)) ||
     MOCK_POPULAR_RESTAURANTS[0];
 
   function handleShare() {
     Share.share({
-      title: `QueueBite Pass - ${restaurant.name}`,
-      message: `Join me at ${restaurant.name}! Queue token #A12, estimated seating at 7:42 PM. Track waitlist live on QueueBite.`,
+      title: `QueueBite Pass - ${liveEntry?.restaurantName || restaurant.name}`,
+      message: `Join me at ${liveEntry?.restaurantName || restaurant.name}! Spot #${(liveEntry?.partiesAhead ?? 4) + 1}. Track waitlist live on QueueBite.`,
     }).catch(() => {});
   }
 
@@ -63,6 +100,28 @@ export default function QueueDetailsScreen() {
     Linking.openURL(`https://www.google.com/maps/search/?api=1&query=${address}`).catch(() => {
       Alert.alert('Directions', `Opening directions to ${restaurant.address}`);
     });
+  }
+
+  async function handleLeaveQueue() {
+    Alert.alert(
+      'Leave Queue?',
+      'Are you sure you want to cancel your place in line?',
+      [
+        { text: 'Keep My Spot', style: 'cancel' },
+        {
+          text: 'Leave Queue',
+          style: 'destructive',
+          onPress: async () => {
+            if (params.id) {
+              try {
+                await api.cancelQueueEntry(params.id, 'User cancelled from pass screen');
+              } catch {}
+            }
+            router.push('/');
+          },
+        },
+      ]
+    );
   }
 
   return (
@@ -240,7 +299,7 @@ export default function QueueDetailsScreen() {
             <View className="h-px bg-neutral-800 my-1" />
 
             <Pressable
-              onPress={() => router.push('/queue/leave-confirm')}
+              onPress={handleLeaveQueue}
               className="py-2.5 flex-row items-center justify-between active:opacity-70">
               <View className="flex-row items-center gap-2.5">
                 <LogOutIcon size={16} color="#dc2626" />
