@@ -105,7 +105,7 @@ export default function OrderTrackingScreen() {
             <ArrowLeftIcon size={18} color="#18181b" />
           </Pressable>
           <View>
-            <Text className="text-xl font-black text-neutral-900 tracking-tight">
+            <Text className="text-xl font-bold text-neutral-900 tracking-tight">
               Live Kitchen Tracker
             </Text>
             <Text className="text-xs text-neutral-500 font-medium">
@@ -122,7 +122,7 @@ export default function OrderTrackingScreen() {
         contentContainerStyle={{ paddingBottom: insets.bottom + 100 }}>
         <View className="px-5 pt-4">
           {/* Main Cooking Live Radar Card */}
-          <View className="bg-white rounded-3xl p-6 border border-neutral-100 shadow-sm items-center mb-4">
+          <View className="bg-white rounded-xl p-6 border border-neutral-100 shadow-sm items-center mb-4">
             <View className="relative items-center justify-center size-28 mb-3">
               <Animated.View
                 style={{
@@ -140,12 +140,12 @@ export default function OrderTrackingScreen() {
             </View>
 
             <View className="px-3 py-1 rounded-full bg-orange-100 mb-2">
-              <Text className="text-[11px] font-black text-orange-900 uppercase tracking-widest">
+              <Text className="text-[11px] font-bold text-orange-900 uppercase tracking-widest">
                 Stove Active • In Progress
               </Text>
             </View>
 
-            <Text className="text-2xl font-black text-neutral-900 tracking-tight text-center">
+            <Text className="text-2xl font-bold text-neutral-900 tracking-tight text-center">
               Chef is Preparing Your Food
             </Text>
 
@@ -162,12 +162,12 @@ export default function OrderTrackingScreen() {
                   <Text className="text-[10px] text-neutral-500">Table #14 • Spot #1</Text>
                 </View>
               </View>
-              <Text className="text-sm font-black text-[#dc2626]">~7 mins</Text>
+              <Text className="text-sm font-bold text-[#dc2626]">~7 mins</Text>
             </View>
           </View>
 
           {/* Dishes Prep Progress */}
-          <View className="bg-white rounded-3xl p-5 border border-neutral-100 shadow-sm mb-4">
+          <View className="bg-white rounded-xl p-5 border border-neutral-100 shadow-sm mb-4">
             <Text className="text-xs font-bold text-neutral-900 mb-3">
               Kitchen Item Progress
             </Text>

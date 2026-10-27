@@ -81,7 +81,7 @@ export default function QueueDetailsScreen() {
             <ArrowLeftIcon size={18} color="#ffffff" />
           </Pressable>
           <View>
-            <Text className="text-xl font-black text-white tracking-tight">
+            <Text className="text-xl font-bold text-white tracking-tight">
               Digital Queue Pass
             </Text>
             <Text className="text-xs text-neutral-400 font-medium">
@@ -102,7 +102,7 @@ export default function QueueDetailsScreen() {
         contentContainerStyle={{ paddingBottom: insets.bottom + 80 }}>
         <View className="px-5 pt-4">
           {/* Main Boarding Pass Card */}
-          <View className="bg-white rounded-3xl overflow-hidden shadow-2xl">
+          <View className="bg-white rounded-xl overflow-hidden shadow-2xl">
             {/* Top Pass Header */}
             <View className="p-5 bg-gradient-to-r from-red-600 to-rose-700 bg-[#dc2626]">
               <View className="flex-row items-center justify-between mb-3">
@@ -115,7 +115,7 @@ export default function QueueDetailsScreen() {
                 <BrandLogo size="sm" />
               </View>
 
-              <Text className="text-2xl font-black text-white tracking-tight" numberOfLines={1}>
+              <Text className="text-2xl font-bold text-white tracking-tight" numberOfLines={1}>
                 {restaurant.name}
               </Text>
               <Text className="text-xs text-red-100 mt-0.5">
@@ -136,7 +136,7 @@ export default function QueueDetailsScreen() {
               <Text className="text-[11px] font-bold text-neutral-400 uppercase tracking-widest">
                 Priority Queue Token
               </Text>
-              <Text className="text-5xl font-black text-neutral-900 tracking-tight my-1">
+              <Text className="text-5xl font-bold text-neutral-900 tracking-tight my-1">
                 #A12
               </Text>
 
@@ -214,7 +214,7 @@ export default function QueueDetailsScreen() {
           </View>
 
           {/* Edit / Manage Links */}
-          <View className="bg-neutral-900 rounded-3xl p-4 border border-neutral-800 mb-4">
+          <View className="bg-neutral-900 rounded-xl p-4 border border-neutral-800 mb-4">
             <Pressable
               onPress={() => router.push('/queue/edit-party')}
               className="py-2.5 flex-row items-center justify-between active:opacity-70">

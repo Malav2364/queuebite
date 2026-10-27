@@ -99,7 +99,7 @@ export default function CreateGroupScreen() {
             <ArrowLeftIcon size={18} color="#18181b" />
           </Pressable>
           <View>
-            <Text className="text-xl font-black text-neutral-900 tracking-tight">
+            <Text className="text-xl font-bold text-neutral-900 tracking-tight">
               Create Group Dining
             </Text>
             <Text className="text-xs text-neutral-500 font-medium">
@@ -116,7 +116,7 @@ export default function CreateGroupScreen() {
         contentContainerStyle={{ paddingBottom: insets.bottom + 100 }}>
         <View className="px-5 pt-4">
           {/* 1. Group Name Input */}
-          <View className="bg-white rounded-3xl p-5 border border-neutral-100 shadow-sm mb-4">
+          <View className="bg-white rounded-xl p-5 border border-neutral-100 shadow-sm mb-4">
             <View className="flex-row items-center gap-2 mb-1">
               <UsersIcon size={16} color="#dc2626" />
               <Text className="text-xs font-bold text-neutral-900">Group Name</Text>
@@ -147,7 +147,7 @@ export default function CreateGroupScreen() {
           </View>
 
           {/* 2. Restaurant Selector */}
-          <View className="bg-white rounded-3xl p-5 border border-neutral-100 shadow-sm mb-4">
+          <View className="bg-white rounded-xl p-5 border border-neutral-100 shadow-sm mb-4">
             <View className="flex-row items-center justify-between mb-1">
               <View className="flex-row items-center gap-2">
                 <UtensilsCrossedIcon size={16} color="#dc2626" />
@@ -188,7 +188,7 @@ export default function CreateGroupScreen() {
           </View>
 
           {/* 3. Expected Party Size Stepper */}
-          <View className="bg-white rounded-3xl p-5 border border-neutral-100 shadow-sm mb-4">
+          <View className="bg-white rounded-xl p-5 border border-neutral-100 shadow-sm mb-4">
             <View className="flex-row items-center justify-between">
               <View>
                 <Text className="text-xs font-bold text-neutral-900">Expected Party Size</Text>
@@ -210,7 +210,7 @@ export default function CreateGroupScreen() {
                 </Pressable>
 
                 <View className="items-center min-w-[36px]">
-                  <Text className="text-xl font-black text-neutral-900">{targetPartySize}</Text>
+                  <Text className="text-xl font-bold text-neutral-900">{targetPartySize}</Text>
                   <Text className="text-[9px] font-bold text-neutral-400">Guests</Text>
                 </View>
 
@@ -229,7 +229,7 @@ export default function CreateGroupScreen() {
           </View>
 
           {/* 4. Occasion Type */}
-          <View className="bg-white rounded-3xl p-5 border border-neutral-100 shadow-sm mb-4">
+          <View className="bg-white rounded-xl p-5 border border-neutral-100 shadow-sm mb-4">
             <View className="flex-row items-center gap-2 mb-1">
               <SparklesIcon size={16} color="#dc2626" />
               <Text className="text-xs font-bold text-neutral-900">Occasion</Text>

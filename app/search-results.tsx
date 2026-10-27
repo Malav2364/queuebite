@@ -198,13 +198,13 @@ export default function SearchResultsScreen() {
             /* ========================================================
                NO SEARCH RESULTS SCREEN (Feature #10)
                ======================================================== */
-            <View className="bg-white rounded-3xl p-7 items-center justify-center border border-neutral-100 shadow-xs mt-6">
+            <View className="bg-white rounded-xl p-7 items-center justify-center border border-neutral-100 shadow-xs mt-6">
               {/* Cute Cloche / Food Illustration */}
               <View className="size-20 rounded-full bg-red-50 items-center justify-center mb-4">
                 <UtensilsCrossedIcon size={34} color="#dc2626" strokeWidth={2} />
               </View>
 
-              <Text className="text-xl font-black text-neutral-900 text-center tracking-tight">
+              <Text className="text-xl font-bold text-neutral-900 text-center tracking-tight">
                 No Results Found
               </Text>
               <Text className="text-xs text-neutral-500 text-center mt-1.5 max-w-[260px] leading-relaxed">
@@ -252,7 +252,7 @@ export default function SearchResultsScreen() {
                       params: { id: restaurant.id },
                     })
                   }
-                  className="bg-white rounded-3xl p-3.5 border border-neutral-100 shadow-xs active:bg-neutral-50">
+                  className="bg-white rounded-xl p-3.5 border border-neutral-100 shadow-xs active:bg-neutral-50">
                   <View className="flex-row items-start">
                     <Image
                       source={{ uri: restaurant.image }}

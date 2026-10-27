@@ -10,10 +10,10 @@ interface MapDiscoveryCardProps {
 export function MapDiscoveryCard({ onOpenMap }: MapDiscoveryCardProps) {
   return (
     <View className="px-5 py-2.5">
-      <View className="relative bg-[#fcf8f5] rounded-3xl p-4 border border-[#f5e8df] overflow-hidden flex-row items-center justify-between shadow-xs">
+      <View className="relative bg-[#fcf8f5] rounded-xl p-4 border border-[#f5e8df] overflow-hidden flex-row items-center justify-between shadow-xs">
         {/* Left: Map Pin Icon in white circle */}
-        <View className="size-12 rounded-2xl bg-white items-center justify-center border border-neutral-200/60 shadow-xs mr-3">
-          <MapPinIcon size={22} color="#dc2626" fill="#dc2626" />
+        <View className="size-11 rounded-xl bg-white items-center justify-center border border-neutral-200/60 shadow-xs mr-3">
+          <MapPinIcon size={20} color="#dc2626" fill="#dc2626" />
         </View>
 
         {/* Center: Title & Subtitle */}
@@ -29,11 +29,11 @@ export function MapDiscoveryCard({ onOpenMap }: MapDiscoveryCardProps) {
         {/* Right: Open Map Button */}
         <Pressable
           onPress={onOpenMap}
-          className="flex-row items-center bg-white active:bg-neutral-50 px-3.5 py-2 rounded-full border border-neutral-200 shadow-xs">
-          <Text className="text-xs font-bold text-[#dc2626] mr-1">
+          className="flex-row items-center bg-[#dc2626] active:bg-[#b91c1c] px-3 py-2 rounded-lg shadow-xs">
+          <Text className="text-xs font-bold text-white mr-1">
             Open Map
           </Text>
-          <ArrowRightIcon size={12} color="#dc2626" />
+          <ArrowRightIcon size={12} color="#ffffff" />
         </Pressable>
       </View>
     </View>

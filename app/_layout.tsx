@@ -120,6 +120,19 @@ function Routes() {
         <Stack.Screen name="order/payment-method" options={{ headerShown: false }} />
         <Stack.Screen name="order/payment-status" options={{ headerShown: false }} />
         <Stack.Screen name="order/refund-status" options={{ headerShown: false }} />
+        <Stack.Screen name="profile/overview" options={{ headerShown: false }} />
+        <Stack.Screen name="profile/edit" options={{ headerShown: false }} />
+        <Stack.Screen name="profile/preferences" options={{ headerShown: false }} />
+        <Stack.Screen name="profile/favorites" options={{ headerShown: false }} />
+        <Stack.Screen name="profile/visits" options={{ headerShown: false }} />
+        <Stack.Screen name="profile/notifications" options={{ headerShown: false }} />
+        <Stack.Screen name="profile/settings" options={{ headerShown: false }} />
+        <Stack.Screen name="profile/privacy-permissions" options={{ headerShown: false }} />
+        <Stack.Screen name="profile/support" options={{ headerShown: false }} />
+        <Stack.Screen name="profile/terms" options={{ headerShown: false }} />
+        <Stack.Screen name="profile/privacy-policy" options={{ headerShown: false }} />
+        <Stack.Screen name="profile/delete-account" options={{ headerShown: false }} />
+        <Stack.Screen name="profile/sign-out-confirm" options={{ headerShown: false }} />
       </Stack.Protected>
 
       {/* Screens outside the guards are accessible to everyone (e.g. not found) */}

@@ -78,7 +78,7 @@ export default function LeaveQueueConfirmScreen() {
           <XIcon size={18} color="#18181b" />
         </Pressable>
 
-        <Text className="text-base font-black text-neutral-900 tracking-tight">
+        <Text className="text-base font-bold text-neutral-900 tracking-tight">
           Leave Queue?
         </Text>
 
@@ -90,12 +90,12 @@ export default function LeaveQueueConfirmScreen() {
         contentContainerStyle={{ paddingBottom: insets.bottom + 110 }}>
         <View className="px-5 pt-4">
           {/* Warning Banner Card */}
-          <View className="bg-red-50/80 border border-red-200 rounded-3xl p-5 mb-4 items-center">
+          <View className="bg-red-50/80 border border-red-200 rounded-xl p-5 mb-4 items-center">
             <View className="size-16 rounded-full bg-red-100 items-center justify-center mb-3">
               <AlertTriangleIcon size={32} color="#dc2626" />
             </View>
 
-            <Text className="text-lg font-black text-red-950 text-center">
+            <Text className="text-lg font-bold text-red-950 text-center">
               Are you sure you want to leave?
             </Text>
 
@@ -109,21 +109,21 @@ export default function LeaveQueueConfirmScreen() {
               <View className="flex-row items-center gap-1.5">
                 <UsersIcon size={14} color="#dc2626" />
                 <Text className="text-xs font-bold text-neutral-700">
-                  Current Spot: <Text className="text-neutral-950 font-black">#{position}</Text>
+                  Current Spot: <Text className="text-neutral-950 font-bold">#{position}</Text>
                 </Text>
               </View>
               <View className="w-px h-3.5 bg-neutral-200" />
               <View className="flex-row items-center gap-1.5">
                 <ClockIcon size={14} color="#dc2626" />
                 <Text className="text-xs font-bold text-neutral-700">
-                  Est. Wait: <Text className="text-neutral-950 font-black">~12 mins</Text>
+                  Est. Wait: <Text className="text-neutral-950 font-bold">~12 mins</Text>
                 </Text>
               </View>
             </View>
           </View>
 
           {/* Restaurant Being Left */}
-          <View className="bg-white rounded-3xl p-4 border border-neutral-100 shadow-sm flex-row items-center gap-3 mb-4">
+          <View className="bg-white rounded-xl p-4 border border-neutral-100 shadow-sm flex-row items-center gap-3 mb-4">
             <Image
               source={{ uri: restaurant.image }}
               className="size-14 rounded-2xl bg-neutral-100"
@@ -143,7 +143,7 @@ export default function LeaveQueueConfirmScreen() {
           </View>
 
           {/* Reason Selection */}
-          <View className="bg-white rounded-3xl p-5 border border-neutral-100 shadow-sm mb-4">
+          <View className="bg-white rounded-xl p-5 border border-neutral-100 shadow-sm mb-4">
             <Text className="text-xs font-bold text-neutral-900 mb-1">
               Help us improve (Optional)
             </Text>

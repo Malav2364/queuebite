@@ -65,7 +65,7 @@ export function JoinQueueModal({
           <View className="bg-[#faf5f0] rounded-2xl p-4 border border-[#f0e6dc] gap-2">
             <View className="flex-row items-center justify-between">
               <View className="flex-row items-center gap-2">
-                <UsersIcon size={16} color="#d94148" />
+                <UsersIcon size={16} color="#dc2626" />
                 <Text className="text-sm font-bold text-neutral-900">Party Size:</Text>
               </View>
               <Text className="text-sm font-extrabold text-neutral-900">

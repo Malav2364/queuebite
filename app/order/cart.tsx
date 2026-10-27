@@ -83,7 +83,7 @@ export default function PreOrderCartScreen() {
             <ArrowLeftIcon size={18} color="#18181b" />
           </Pressable>
           <View>
-            <Text className="text-xl font-black text-neutral-900 tracking-tight">
+            <Text className="text-xl font-bold text-neutral-900 tracking-tight">
               Pre-Order Cart
             </Text>
             <Text className="text-xs text-neutral-500 font-medium">
@@ -100,7 +100,7 @@ export default function PreOrderCartScreen() {
         contentContainerStyle={{ paddingBottom: insets.bottom + 120 }}>
         <View className="px-5 pt-4">
           {/* Queue Synchronization Card */}
-          <View className="bg-red-50/80 border border-red-200/80 rounded-3xl p-4 flex-row items-center justify-between mb-4">
+          <View className="bg-red-50/80 border border-red-200/80 rounded-xl p-4 flex-row items-center justify-between mb-4">
             <View className="flex-row items-center gap-2.5 flex-1 pr-2">
               <View className="size-9 rounded-2xl bg-red-100 items-center justify-center">
                 <ClockIcon size={18} color="#dc2626" />
@@ -119,7 +119,7 @@ export default function PreOrderCartScreen() {
           </View>
 
           {/* Cart Items List */}
-          <View className="bg-white rounded-3xl p-5 border border-neutral-100 shadow-sm mb-4">
+          <View className="bg-white rounded-xl p-5 border border-neutral-100 shadow-sm mb-4">
             <Text className="text-xs font-bold text-neutral-900 mb-3">
               Order Items ({cartItems.length})
             </Text>
@@ -140,7 +140,7 @@ export default function PreOrderCartScreen() {
                         <Text className="text-xs font-bold text-neutral-900" numberOfLines={1}>
                           {item.name}
                         </Text>
-                        <Text className="text-xs font-black text-[#dc2626] mt-0.5">
+                        <Text className="text-xs font-bold text-[#dc2626] mt-0.5">
                           ₹{item.price}
                         </Text>
 
@@ -168,7 +168,7 @@ export default function PreOrderCartScreen() {
                         className="size-6 rounded-lg bg-white items-center justify-center active:bg-neutral-200">
                         <MinusIcon size={12} color="#18181b" />
                       </Pressable>
-                      <Text className="text-xs font-black text-neutral-900 w-4 text-center">
+                      <Text className="text-xs font-bold text-neutral-900 w-4 text-center">
                         {item.quantity}
                       </Text>
                       <Pressable
@@ -192,7 +192,7 @@ export default function PreOrderCartScreen() {
           </View>
 
           {/* Kitchen Serving Notes */}
-          <View className="bg-white rounded-3xl p-5 border border-neutral-100 shadow-sm mb-4">
+          <View className="bg-white rounded-xl p-5 border border-neutral-100 shadow-sm mb-4">
             <Text className="text-xs font-bold text-neutral-900 mb-1">
               Table Serving Instructions
             </Text>
@@ -210,7 +210,7 @@ export default function PreOrderCartScreen() {
           </View>
 
           {/* Promo Code Box */}
-          <View className="bg-white rounded-3xl p-4 border border-neutral-100 shadow-sm mb-4">
+          <View className="bg-white rounded-xl p-4 border border-neutral-100 shadow-sm mb-4">
             <View className="flex-row items-center gap-2 mb-2">
               <TagIcon size={14} color="#dc2626" />
               <Text className="text-xs font-bold text-neutral-900">Offers & Promo Codes</Text>
@@ -235,7 +235,7 @@ export default function PreOrderCartScreen() {
           </View>
 
           {/* Bill Summary Breakdown */}
-          <View className="bg-white rounded-3xl p-5 border border-neutral-100 shadow-sm mb-4">
+          <View className="bg-white rounded-xl p-5 border border-neutral-100 shadow-sm mb-4">
             <Text className="text-xs font-bold text-neutral-900 mb-3">Bill Breakdown</Text>
 
             <View className="gap-2">
@@ -261,8 +261,8 @@ export default function PreOrderCartScreen() {
               <View className="h-px bg-neutral-100 my-1.5" />
 
               <View className="flex-row items-center justify-between">
-                <Text className="text-sm font-black text-neutral-900">To Pay</Text>
-                <Text className="text-base font-black text-[#dc2626]">₹{grandTotal}</Text>
+                <Text className="text-sm font-bold text-neutral-900">To Pay</Text>
+                <Text className="text-base font-bold text-[#dc2626]">₹{grandTotal}</Text>
               </View>
             </View>
           </View>
@@ -277,7 +277,7 @@ export default function PreOrderCartScreen() {
           <Text className="text-[10px] text-neutral-400 font-bold uppercase tracking-wider">
             Total Amount
           </Text>
-          <Text className="text-xl font-black text-neutral-900">₹{grandTotal}</Text>
+          <Text className="text-xl font-bold text-neutral-900">₹{grandTotal}</Text>
         </View>
 
         <Pressable

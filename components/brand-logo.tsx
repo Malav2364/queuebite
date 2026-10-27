@@ -7,18 +7,18 @@ interface BrandLogoProps {
 }
 
 export function BrandLogo({ size = 'md', style }: BrandLogoProps) {
-  // Dimensions tailored to the original QueueBite logo aspect ratio
+  // Dimensions matching the exact 3.63:1 aspect ratio of the trimmed logo
   const dimensions = {
-    sm: { width: 110, height: 28 },
-    md: { width: 140, height: 35 },
-    lg: { width: 175, height: 44 },
-    xl: { width: 210, height: 52 },
+    sm: { width: 102, height: 28 },
+    md: { width: 124, height: 34 },
+    lg: { width: 153, height: 42 },
+    xl: { width: 182, height: 50 },
   };
 
   const { width, height } = dimensions[size];
 
   return (
-    <View className="justify-center">
+    <View className="justify-center items-start">
       <Image
         source={require('@/assets/images/queuebite-logo.png')}
         style={[{ width, height, resizeMode: 'contain' }, style]}

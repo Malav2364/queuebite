@@ -62,7 +62,7 @@ export default function WelcomeScreen() {
         {/* Continue Button */}
         <Pressable
           onPress={() => router.push('/(auth)/sign-in')}
-          className="w-full bg-[#d94148] active:bg-[#0a663a] h-14 rounded-2xl flex-row items-center justify-center gap-2 shadow-sm">
+          className="w-full bg-[#dc2626] active:bg-[#0a663a] h-14 rounded-2xl flex-row items-center justify-center gap-2 shadow-sm">
           <Text className="text-white text-base font-semibold">Continue</Text>
           <ArrowRightIcon color="white" size={18} />
         </Pressable>

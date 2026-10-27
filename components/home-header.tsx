@@ -36,9 +36,9 @@ export function HomeHeader({
     <View className="px-5 pt-2 pb-2">
       <View className="flex-row items-center justify-between">
         {/* Brand & Location on Left */}
-        <View className="flex-1">
+        <View className="flex-1 items-start">
           {/* Unified Brand Logo */}
-          <BrandLogo size="md" />
+          <BrandLogo size="md" style={{ marginLeft: -3 }} />
 
           {/* Location Chip */}
           <Pressable

@@ -89,7 +89,7 @@ export default function SavedRestaurantsScreen() {
             <ArrowLeftIcon size={18} color="#18181b" />
           </Pressable>
           <View>
-            <Text className="text-xl font-black text-neutral-900 tracking-tight">
+            <Text className="text-xl font-bold text-neutral-900 tracking-tight">
               Saved Places
             </Text>
             <Text className="text-xs text-neutral-500 font-medium">
@@ -137,7 +137,7 @@ export default function SavedRestaurantsScreen() {
         {/* Saved List or Empty State */}
         <View className="px-5 pt-2 gap-3.5">
           {savedRestaurants.length === 0 ? (
-            <View className="bg-white rounded-3xl p-8 items-center justify-center border border-neutral-100 shadow-xs mt-6">
+            <View className="bg-white rounded-xl p-8 items-center justify-center border border-neutral-100 shadow-xs mt-6">
               <View className="size-16 rounded-full bg-red-50 items-center justify-center mb-3">
                 <HeartIcon size={28} color="#dc2626" />
               </View>
@@ -170,7 +170,7 @@ export default function SavedRestaurantsScreen() {
                       params: { id: restaurant.id },
                     })
                   }
-                  className="bg-white rounded-3xl p-4 border border-neutral-100 shadow-xs active:bg-neutral-50">
+                  className="bg-white rounded-xl p-4 border border-neutral-100 shadow-xs active:bg-neutral-50">
                   {/* Top Details */}
                   <View className="flex-row items-start">
                     <Image
@@ -268,7 +268,7 @@ export default function SavedRestaurantsScreen() {
           if (tab === 'HOME') router.push('/');
           else if (tab === 'EXPLORE') router.push('/explore');
           else if (tab === 'MY_QUEUE') router.push({ pathname: '/restaurant/live-queue', params: { id: 'pop-1' } });
-          else if (tab === 'PROFILE') Alert.alert('Profile', 'Signed in as Malav.');
+          else if (tab === 'PROFILE') router.push('/profile/overview');
         }}
         hasActiveQueue={true}
       />

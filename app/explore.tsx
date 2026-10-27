@@ -453,7 +453,7 @@ export default function ExploreScreen() {
               : 'border-neutral-200/90'
           }`}>
           <Text
-            className={`text-xs font-black ${
+            className={`text-xs font-bold ${
               isSelected ? 'text-[#dc2626]' : 'text-neutral-900'
             }`}>
             {pin.wait}
@@ -907,7 +907,7 @@ export default function ExploreScreen() {
             </View>
 
             {/* Selected Restaurant Bottom Card / Sheet */}
-            <View className="mx-4 -mt-6 bg-white rounded-3xl p-4 border border-neutral-100 shadow-xl shadow-black/15 z-30">
+            <View className="mx-4 -mt-6 bg-white rounded-xl p-4 border border-neutral-100 shadow-xl shadow-black/15 z-30">
               {/* Drag Handle Bar */}
               <View className="w-10 h-1 bg-neutral-300 rounded-full mx-auto mb-3" />
 
@@ -1110,7 +1110,7 @@ export default function ExploreScreen() {
             {/* Restaurants Feed */}
             <View className="px-5 gap-3.5">
               {filteredRestaurants.length === 0 ? (
-                <View className="bg-white rounded-3xl p-8 items-center justify-center border border-neutral-100 shadow-xs my-4">
+                <View className="bg-white rounded-xl p-8 items-center justify-center border border-neutral-100 shadow-xs my-4">
                   <View className="size-16 rounded-full bg-red-50 items-center justify-center mb-3">
                     <SearchIcon size={26} color="#dc2626" />
                   </View>
@@ -1144,7 +1144,7 @@ export default function ExploreScreen() {
                           params: { id: restaurant.id },
                         })
                       }
-                      className="bg-white rounded-3xl p-3.5 border border-neutral-100 shadow-xs active:bg-neutral-50">
+                      className="bg-white rounded-xl p-3.5 border border-neutral-100 shadow-xs active:bg-neutral-50">
                       {/* Top: Image & Details */}
                       <View className="flex-row items-start">
                         <Image

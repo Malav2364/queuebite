@@ -57,7 +57,7 @@ export function FilterSortModal({
           <View className="px-5 py-4 border-b border-neutral-100 flex-row items-center justify-between">
             <View className="flex-row items-center gap-2">
               <SlidersHorizontalIcon size={18} color="#dc2626" />
-              <Text className="text-lg font-black text-neutral-900 tracking-tight">
+              <Text className="text-lg font-bold text-neutral-900 tracking-tight">
                 Filters & Sorting
               </Text>
             </View>

@@ -103,7 +103,7 @@ export default function OrderCancelOrIssueScreen() {
             <ArrowLeftIcon size={18} color="#18181b" />
           </Pressable>
           <View>
-            <Text className="text-xl font-black text-neutral-900 tracking-tight">
+            <Text className="text-xl font-bold text-neutral-900 tracking-tight">
               Order Assistance
             </Text>
             <Text className="text-xs text-neutral-500 font-medium">
@@ -152,11 +152,11 @@ export default function OrderCancelOrIssueScreen() {
             /* Cancel View */
             <>
               {/* Refund Eligibility Notice */}
-              <View className="bg-emerald-50/80 border border-emerald-200/80 rounded-3xl p-5 mb-4 items-center">
+              <View className="bg-emerald-50/80 border border-emerald-200/80 rounded-xl p-5 mb-4 items-center">
                 <View className="size-14 rounded-full bg-emerald-100 items-center justify-center mb-2">
                   <ShieldCheckIcon size={28} color="#059669" />
                 </View>
-                <Text className="text-base font-black text-emerald-950 text-center">
+                <Text className="text-base font-bold text-emerald-950 text-center">
                   100% Instant Refund Eligible
                 </Text>
                 <Text className="text-xs text-emerald-800 text-center mt-1 leading-relaxed max-w-[280px]">
@@ -166,7 +166,7 @@ export default function OrderCancelOrIssueScreen() {
               </View>
 
               {/* Reasons */}
-              <View className="bg-white rounded-3xl p-5 border border-neutral-100 shadow-sm mb-4">
+              <View className="bg-white rounded-xl p-5 border border-neutral-100 shadow-sm mb-4">
                 <Text className="text-xs font-bold text-neutral-900 mb-1">
                   Reason for Cancellation
                 </Text>
@@ -207,7 +207,7 @@ export default function OrderCancelOrIssueScreen() {
           ) : (
             /* Issue View */
             <>
-              <View className="bg-white rounded-3xl p-5 border border-neutral-100 shadow-sm mb-4">
+              <View className="bg-white rounded-xl p-5 border border-neutral-100 shadow-sm mb-4">
                 <Text className="text-xs font-bold text-neutral-900 mb-1">
                   What went wrong?
                 </Text>
@@ -245,7 +245,7 @@ export default function OrderCancelOrIssueScreen() {
                 </View>
               </View>
 
-              <View className="bg-white rounded-3xl p-5 border border-neutral-100 shadow-sm mb-4">
+              <View className="bg-white rounded-xl p-5 border border-neutral-100 shadow-sm mb-4">
                 <Text className="text-xs font-bold text-neutral-900 mb-1">
                   Details for Floor Manager
                 </Text>

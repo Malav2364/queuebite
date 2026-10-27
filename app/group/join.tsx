@@ -91,7 +91,7 @@ export default function JoinGroupScreen() {
             <ArrowLeftIcon size={18} color="#18181b" />
           </Pressable>
           <View>
-            <Text className="text-xl font-black text-neutral-900 tracking-tight">
+            <Text className="text-xl font-bold text-neutral-900 tracking-tight">
               Join Group
             </Text>
             <Text className="text-xs text-neutral-500 font-medium">
@@ -108,7 +108,7 @@ export default function JoinGroupScreen() {
         contentContainerStyle={{ paddingBottom: insets.bottom + 100 }}>
         <View className="px-5 pt-4">
           {/* Code Input Card */}
-          <View className="bg-white rounded-3xl p-5 border border-neutral-100 shadow-sm mb-4">
+          <View className="bg-white rounded-xl p-5 border border-neutral-100 shadow-sm mb-4">
             <Text className="text-xs font-bold text-neutral-900 mb-1">
               Group Invite Code
             </Text>
@@ -124,7 +124,7 @@ export default function JoinGroupScreen() {
                 placeholderTextColor="#a1a1aa"
                 autoCapitalize="characters"
                 maxLength={8}
-                className="flex-1 h-12 bg-neutral-50 border border-neutral-200 rounded-2xl px-4 text-base font-black tracking-widest text-neutral-900 text-center"
+                className="flex-1 h-12 bg-neutral-50 border border-neutral-200 rounded-2xl px-4 text-base font-bold tracking-widest text-neutral-900 text-center"
               />
 
               <Pressable
@@ -147,7 +147,7 @@ export default function JoinGroupScreen() {
 
           {/* Verified Group Preview Card */}
           {isCodeMatched && (
-            <View className="bg-white rounded-3xl p-5 border border-emerald-200 shadow-sm mb-4">
+            <View className="bg-white rounded-xl p-5 border border-emerald-200 shadow-sm mb-4">
               <View className="flex-row items-center justify-between pb-3 border-b border-neutral-100">
                 <View className="flex-row items-center gap-2">
                   <View className="size-2 rounded-full bg-emerald-500" />
@@ -167,7 +167,7 @@ export default function JoinGroupScreen() {
                   resizeMode="cover"
                 />
                 <View className="flex-1">
-                  <Text className="text-base font-black text-neutral-900" numberOfLines={1}>
+                  <Text className="text-base font-bold text-neutral-900" numberOfLines={1}>
                     {group.name}
                   </Text>
                   <Text className="text-xs text-neutral-600 mt-0.5" numberOfLines={1}>
@@ -199,7 +199,7 @@ export default function JoinGroupScreen() {
           )}
 
           {/* Current Arrival Status */}
-          <View className="bg-white rounded-3xl p-5 border border-neutral-100 shadow-sm mb-4">
+          <View className="bg-white rounded-xl p-5 border border-neutral-100 shadow-sm mb-4">
             <Text className="text-xs font-bold text-neutral-900 mb-1">
               Your Arrival Status
             </Text>
@@ -237,7 +237,7 @@ export default function JoinGroupScreen() {
           </View>
 
           {/* Dietary Restrictions */}
-          <View className="bg-white rounded-3xl p-5 border border-neutral-100 shadow-sm mb-4">
+          <View className="bg-white rounded-xl p-5 border border-neutral-100 shadow-sm mb-4">
             <Text className="text-xs font-bold text-neutral-900 mb-1">
               Your Dietary Restrictions
             </Text>

@@ -71,7 +71,7 @@ export default function PaymentMethodScreen() {
             <ArrowLeftIcon size={18} color="#18181b" />
           </Pressable>
           <View>
-            <Text className="text-xl font-black text-neutral-900 tracking-tight">
+            <Text className="text-xl font-bold text-neutral-900 tracking-tight">
               Payment Method
             </Text>
             <Text className="text-xs text-neutral-500 font-medium">
@@ -88,7 +88,7 @@ export default function PaymentMethodScreen() {
         contentContainerStyle={{ paddingBottom: insets.bottom + 110 }}>
         <View className="px-5 pt-4">
           {/* Bill Split Toggle Card */}
-          <View className="bg-white rounded-3xl p-5 border border-neutral-100 shadow-sm mb-4 flex-row items-center justify-between">
+          <View className="bg-white rounded-xl p-5 border border-neutral-100 shadow-sm mb-4 flex-row items-center justify-between">
             <View className="flex-1 pr-3">
               <View className="flex-row items-center gap-1.5">
                 <UsersIcon size={14} color="#dc2626" />
@@ -110,7 +110,7 @@ export default function PaymentMethodScreen() {
           </View>
 
           {/* Section 1: UPI Options */}
-          <View className="bg-white rounded-3xl p-5 border border-neutral-100 shadow-sm mb-4">
+          <View className="bg-white rounded-xl p-5 border border-neutral-100 shadow-sm mb-4">
             <View className="flex-row items-center justify-between mb-3">
               <View className="flex-row items-center gap-2">
                 <SmartphoneIcon size={16} color="#dc2626" />
@@ -160,7 +160,7 @@ export default function PaymentMethodScreen() {
           </View>
 
           {/* Section 2: Cards */}
-          <View className="bg-white rounded-3xl p-5 border border-neutral-100 shadow-sm mb-4">
+          <View className="bg-white rounded-xl p-5 border border-neutral-100 shadow-sm mb-4">
             <View className="flex-row items-center gap-2 mb-3">
               <CreditCardIcon size={16} color="#dc2626" />
               <Text className="text-xs font-bold text-neutral-900">Credit / Debit Cards</Text>
@@ -197,7 +197,7 @@ export default function PaymentMethodScreen() {
           </View>
 
           {/* Section 3: QueueBite Dine Wallet */}
-          <View className="bg-white rounded-3xl p-5 border border-neutral-100 shadow-sm mb-4">
+          <View className="bg-white rounded-xl p-5 border border-neutral-100 shadow-sm mb-4">
             <Pressable
               onPress={() => setSelectedMethod('wallet')}
               className={`p-3.5 rounded-2xl border flex-row items-center justify-between ${
@@ -231,7 +231,7 @@ export default function PaymentMethodScreen() {
           </View>
 
           {/* Section 4: Pay at Table */}
-          <View className="bg-white rounded-3xl p-5 border border-neutral-100 shadow-sm mb-4">
+          <View className="bg-white rounded-xl p-5 border border-neutral-100 shadow-sm mb-4">
             <Pressable
               onPress={() => setSelectedMethod('table_pay')}
               className={`p-3.5 rounded-2xl border flex-row items-center justify-between ${

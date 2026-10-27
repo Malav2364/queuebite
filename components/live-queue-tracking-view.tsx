@@ -168,7 +168,7 @@ export function LiveQueueTrackingView({
         </View>
 
         {/* 2. Restaurant Summary Card (Overlapping) */}
-        <View className="-mt-7 mx-4 bg-white rounded-3xl p-3.5 shadow-sm border border-neutral-100 flex-row items-center justify-between mb-4">
+        <View className="-mt-7 mx-4 bg-white rounded-xl p-3.5 shadow-sm border border-neutral-100 flex-row items-center justify-between mb-4">
           {/* Left Thumbnail & Info */}
           <View className="flex-row items-center gap-3 flex-1 pr-2">
             <Image
@@ -239,7 +239,7 @@ export function LiveQueueTrackingView({
         </View>
 
         {/* 3. Queue Position & Live Estimate Card */}
-        <View className="mx-4 bg-[#fdf6f0] border border-[#fbdcc8] rounded-3xl p-5 mb-4 shadow-xs">
+        <View className="mx-4 bg-[#fdf6f0] border border-[#fbdcc8] rounded-xl p-5 mb-4 shadow-xs">
           <View className="flex-row items-center justify-between">
             {/* Left Column: Circular Position Progress Ring */}
             <View className="items-center justify-center">
@@ -389,7 +389,7 @@ export function LiveQueueTrackingView({
             </Pressable>
           </View>
 
-          <View className="bg-white rounded-3xl p-4 border border-neutral-100 shadow-sm flex-row items-start justify-between">
+          <View className="bg-white rounded-xl p-4 border border-neutral-100 shadow-sm flex-row items-start justify-between">
             {/* Left: Event Timeline */}
             <View className="flex-1 pr-2">
               {/* Event 1 */}

@@ -87,7 +87,7 @@ export default function InstantReorderScreen() {
             <ArrowLeftIcon size={18} color="#18181b" />
           </Pressable>
           <View>
-            <Text className="text-xl font-black text-neutral-900 tracking-tight">
+            <Text className="text-xl font-bold text-neutral-900 tracking-tight">
               Instant Reorder
             </Text>
             <Text className="text-xs text-neutral-500 font-medium">
@@ -104,7 +104,7 @@ export default function InstantReorderScreen() {
         contentContainerStyle={{ paddingBottom: insets.bottom + 110 }}>
         <View className="px-5 pt-4">
           {/* Restaurant Status Card */}
-          <View className="bg-white rounded-3xl p-4 border border-neutral-100 shadow-sm flex-row items-center justify-between mb-4">
+          <View className="bg-white rounded-xl p-4 border border-neutral-100 shadow-sm flex-row items-center justify-between mb-4">
             <View className="flex-row items-center gap-3 flex-1 pr-2">
               <Image
                 source={{ uri: restaurant.image }}
@@ -127,7 +127,7 @@ export default function InstantReorderScreen() {
           </View>
 
           {/* Dishes Selection List */}
-          <View className="bg-white rounded-3xl p-5 border border-neutral-100 shadow-sm mb-4">
+          <View className="bg-white rounded-xl p-5 border border-neutral-100 shadow-sm mb-4">
             <Text className="text-xs font-bold text-neutral-900 mb-1">
               Select Items to Reorder
             </Text>
@@ -163,7 +163,7 @@ export default function InstantReorderScreen() {
                           <Text className="text-xs font-bold text-neutral-900" numberOfLines={1}>
                             {item.name}
                           </Text>
-                          <Text className="text-xs font-black text-[#dc2626] mt-0.5">
+                          <Text className="text-xs font-bold text-[#dc2626] mt-0.5">
                             ₹{item.price}
                           </Text>
                         </View>
@@ -177,7 +177,7 @@ export default function InstantReorderScreen() {
                             className="size-6 rounded-lg bg-neutral-100 items-center justify-center active:bg-neutral-200">
                             <MinusIcon size={12} color="#18181b" />
                           </Pressable>
-                          <Text className="text-xs font-black text-neutral-900 w-4 text-center">
+                          <Text className="text-xs font-bold text-neutral-900 w-4 text-center">
                             {item.quantity}
                           </Text>
                           <Pressable
@@ -204,7 +204,7 @@ export default function InstantReorderScreen() {
           <Text className="text-[10px] text-neutral-400 font-bold uppercase tracking-wider">
             Reorder Total
           </Text>
-          <Text className="text-xl font-black text-neutral-900">₹{subtotal}</Text>
+          <Text className="text-xl font-bold text-neutral-900">₹{subtotal}</Text>
         </View>
 
         <Pressable

@@ -94,7 +94,7 @@ export default function GroupReadinessScreen() {
             <ArrowLeftIcon size={18} color="#18181b" />
           </Pressable>
           <View>
-            <Text className="text-xl font-black text-neutral-900 tracking-tight">
+            <Text className="text-xl font-bold text-neutral-900 tracking-tight">
               Group Readiness
             </Text>
             <Text className="text-xs text-neutral-500 font-medium">
@@ -111,7 +111,7 @@ export default function GroupReadinessScreen() {
         contentContainerStyle={{ paddingBottom: insets.bottom + 100 }}>
         <View className="px-5 pt-4">
           {/* 1. Readiness Summary Card */}
-          <View className="bg-white rounded-3xl p-6 border border-neutral-100 shadow-sm mb-4 items-center">
+          <View className="bg-white rounded-xl p-6 border border-neutral-100 shadow-sm mb-4 items-center">
             <View
               className={`size-20 rounded-full items-center justify-center mb-3 ${
                 isAllReady ? 'bg-emerald-100' : 'bg-red-50'
@@ -119,7 +119,7 @@ export default function GroupReadinessScreen() {
               <ShieldCheckIcon size={38} color={isAllReady ? '#059669' : '#dc2626'} />
             </View>
 
-            <Text className="text-2xl font-black text-neutral-900 tracking-tight text-center">
+            <Text className="text-2xl font-bold text-neutral-900 tracking-tight text-center">
               {readyCount} of {members.length} Members Present
             </Text>
 
@@ -139,7 +139,7 @@ export default function GroupReadinessScreen() {
           </View>
 
           {/* 2. Update My Personal Status */}
-          <View className="bg-white rounded-3xl p-5 border border-neutral-100 shadow-sm mb-4">
+          <View className="bg-white rounded-xl p-5 border border-neutral-100 shadow-sm mb-4">
             <Text className="text-xs font-bold text-neutral-900 mb-1">
               Your Current Location Status
             </Text>
@@ -201,7 +201,7 @@ export default function GroupReadinessScreen() {
           </View>
 
           {/* 3. Member Readiness Checklist */}
-          <View className="bg-white rounded-3xl p-5 border border-neutral-100 shadow-sm mb-4">
+          <View className="bg-white rounded-xl p-5 border border-neutral-100 shadow-sm mb-4">
             <Text className="text-xs font-bold text-neutral-900 mb-3">
               Member Arrival Statuses
             </Text>

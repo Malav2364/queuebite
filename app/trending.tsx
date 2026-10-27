@@ -61,7 +61,7 @@ export default function TrendingScreen() {
           </Pressable>
           <View>
             <View className="flex-row items-center gap-1.5">
-              <Text className="text-xl font-black text-neutral-900 tracking-tight">
+              <Text className="text-xl font-bold text-neutral-900 tracking-tight">
                 Trending This Week
               </Text>
               <FlameIcon size={16} color="#dc2626" />
@@ -92,7 +92,7 @@ export default function TrendingScreen() {
                     params: { id: restaurant.id },
                   })
                 }
-                className="bg-white rounded-3xl overflow-hidden border border-neutral-100 shadow-sm active:opacity-95">
+                className="bg-white rounded-xl overflow-hidden border border-neutral-100 shadow-sm active:opacity-95">
                 {/* Hero Image */}
                 <View className="relative h-44 w-full bg-neutral-900">
                   <Image
@@ -105,7 +105,7 @@ export default function TrendingScreen() {
                   {/* Top Rank Badge */}
                   <View className="absolute top-3 left-3 flex-row items-center gap-1 bg-[#dc2626] px-3 py-1 rounded-full shadow-md">
                     <TrendingUpIcon size={12} color="#ffffff" />
-                    <Text className="text-[11px] font-black text-white">
+                    <Text className="text-[11px] font-bold text-white">
                       #{index + 1} Trending
                     </Text>
                   </View>
@@ -124,7 +124,7 @@ export default function TrendingScreen() {
                   {/* Live Wait Badge on Image */}
                   <View className="absolute bottom-3 left-3 flex-row items-center gap-1.5 bg-black/75 px-3 py-1.5 rounded-xl border border-white/20">
                     <ClockIcon size={13} color="#22c55e" />
-                    <Text className="text-xs font-black text-white">
+                    <Text className="text-xs font-bold text-white">
                       {restaurant.waitRange}
                     </Text>
                     <Text className="text-[10px] text-neutral-300">
@@ -147,7 +147,7 @@ export default function TrendingScreen() {
 
                     <View className="flex-row items-center bg-amber-50 px-2.5 py-1 rounded-full border border-amber-200/80">
                       <StarIcon size={13} color="#eab308" fill="#eab308" />
-                      <Text className="text-xs font-black text-amber-900 ml-1">
+                      <Text className="text-xs font-bold text-amber-900 ml-1">
                         {restaurant.rating.toFixed(1)}
                       </Text>
                     </View>

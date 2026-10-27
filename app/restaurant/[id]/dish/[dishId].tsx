@@ -117,7 +117,7 @@ export default function DishDetailsScreen() {
         </View>
 
         {/* 2. Dish Title & Price Card */}
-        <View className="mx-4 -mt-4 bg-white rounded-3xl p-5 border border-neutral-100 shadow-sm">
+        <View className="mx-4 -mt-4 bg-white rounded-xl p-5 border border-neutral-100 shadow-sm">
           <View className="flex-row items-start justify-between">
             <View className="flex-1 pr-3">
               <View className="flex-row items-center gap-2 mb-1">
@@ -127,7 +127,7 @@ export default function DishDetailsScreen() {
                 <Text className="text-xs font-bold text-emerald-700">100% Vegetarian</Text>
               </View>
 
-              <Text className="text-2xl font-black text-neutral-900 tracking-tight">
+              <Text className="text-2xl font-bold text-neutral-900 tracking-tight">
                 {dish.name}
               </Text>
               <Text className="text-xs text-neutral-500 mt-0.5 font-medium">
@@ -136,7 +136,7 @@ export default function DishDetailsScreen() {
             </View>
 
             <View className="items-end">
-              <Text className="text-2xl font-black text-[#dc2626]">
+              <Text className="text-2xl font-bold text-[#dc2626]">
                 ₹{dish.price}
               </Text>
               <Text className="text-[10px] text-neutral-400">Taxes inclusive</Text>
@@ -168,7 +168,7 @@ export default function DishDetailsScreen() {
         </View>
 
         {/* 3. Description & Ingredients */}
-        <View className="mx-4 mt-3 bg-white rounded-3xl p-5 border border-neutral-100 shadow-xs">
+        <View className="mx-4 mt-3 bg-white rounded-xl p-5 border border-neutral-100 shadow-xs">
           <Text className="text-sm font-bold text-neutral-900 mb-2">Description</Text>
           <Text className="text-xs text-neutral-600 leading-relaxed font-normal">
             Handcrafted artisan pasta prepared fresh every morning. Tossed in a rich emulsion of black Italian winter truffles, cultured cream butter, and 24-month aged Parmigiano Reggiano. Garnished with freshly cracked Tellicherry black pepper and micro herbs.
@@ -189,7 +189,7 @@ export default function DishDetailsScreen() {
         </View>
 
         {/* 4. Pre-Order Queue Note */}
-        <View className="mx-4 mt-3 bg-white rounded-3xl p-5 border border-neutral-100 shadow-xs">
+        <View className="mx-4 mt-3 bg-white rounded-xl p-5 border border-neutral-100 shadow-xs">
           <View className="flex-row items-center gap-2 mb-2">
             <MessageSquareIcon size={16} color="#dc2626" />
             <Text className="text-sm font-bold text-neutral-900">
@@ -217,7 +217,7 @@ export default function DishDetailsScreen() {
         style={{ paddingBottom: insets.bottom + 8 }}>
         <View>
           <Text className="text-xs text-neutral-500">Queue at {restaurant.name}</Text>
-          <Text className="text-sm font-black text-neutral-900">Wait: {restaurant.waitRange}</Text>
+          <Text className="text-sm font-bold text-neutral-900">Wait: {restaurant.waitRange}</Text>
         </View>
 
         <Pressable

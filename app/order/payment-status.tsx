@@ -44,7 +44,7 @@ export default function PaymentStatusScreen() {
       <View
         className="px-5 pb-3 bg-white border-b border-neutral-100 flex-row items-center justify-between"
         style={{ paddingTop: insets.top + 8 }}>
-        <Text className="text-xl font-black text-neutral-900 tracking-tight">
+        <Text className="text-xl font-bold text-neutral-900 tracking-tight">
           Payment Status
         </Text>
 
@@ -62,7 +62,7 @@ export default function PaymentStatusScreen() {
                 <CheckCircle2Icon size={44} color="#059669" />
               </View>
 
-              <Text className="text-2xl font-black text-neutral-900 tracking-tight text-center">
+              <Text className="text-2xl font-bold text-neutral-900 tracking-tight text-center">
                 Payment Successful!
               </Text>
 
@@ -71,11 +71,11 @@ export default function PaymentStatusScreen() {
               </Text>
 
               {/* Receipt Summary Card */}
-              <View className="w-full bg-white rounded-3xl p-5 border border-neutral-100 shadow-sm mt-6 mb-5">
+              <View className="w-full bg-white rounded-xl p-5 border border-neutral-100 shadow-sm mt-6 mb-5">
                 <View className="flex-row items-center justify-between pb-3 border-b border-neutral-100">
                   <View>
                     <Text className="text-[10px] font-semibold text-neutral-400">Amount Paid</Text>
-                    <Text className="text-2xl font-black text-[#dc2626]">₹{amount}</Text>
+                    <Text className="text-2xl font-bold text-[#dc2626]">₹{amount}</Text>
                   </View>
                   <View className="px-2.5 py-1 rounded-full bg-emerald-50 border border-emerald-200">
                     <Text className="text-[10px] font-bold text-emerald-800">Paid in Full</Text>
@@ -93,7 +93,7 @@ export default function PaymentStatusScreen() {
                   </View>
                   <View className="flex-row items-center justify-between">
                     <Text className="text-xs text-neutral-500">Linked Queue Token</Text>
-                    <Text className="text-xs font-black text-neutral-900">Token #A12</Text>
+                    <Text className="text-xs font-bold text-neutral-900">Token #A12</Text>
                   </View>
                   <View className="flex-row items-center justify-between">
                     <Text className="text-xs text-neutral-500">Kitchen Stove Fire</Text>
@@ -132,7 +132,7 @@ export default function PaymentStatusScreen() {
                 <XCircleIcon size={44} color="#dc2626" />
               </View>
 
-              <Text className="text-2xl font-black text-neutral-900 tracking-tight text-center">
+              <Text className="text-2xl font-bold text-neutral-900 tracking-tight text-center">
                 Payment Declined
               </Text>
 
@@ -141,7 +141,7 @@ export default function PaymentStatusScreen() {
               </Text>
 
               {/* Error Detail Card */}
-              <View className="w-full bg-white rounded-3xl p-5 border border-red-200 shadow-sm mt-6 mb-5">
+              <View className="w-full bg-white rounded-xl p-5 border border-red-200 shadow-sm mt-6 mb-5">
                 <View className="flex-row items-center gap-2 mb-2">
                   <AlertCircleIcon size={16} color="#dc2626" />
                   <Text className="text-xs font-bold text-red-950">Bank Gateway Message</Text>

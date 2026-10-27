@@ -38,6 +38,7 @@ export function VerifyEmailForm() {
       // and redirect the user
       if (signUp.status === 'complete') {
         await signUp.finalize();
+        router.replace('/profile/preferences?onboarding=true');
         return;
       }
 

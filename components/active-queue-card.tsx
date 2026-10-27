@@ -35,8 +35,8 @@ export function ActiveQueueCard({
           onPress={onFindTablePress}
           className="flex-row items-center justify-between p-4 rounded-2xl bg-gradient-to-r bg-[#faf5f0] border border-[#f0e6dc] shadow-xs">
           <View className="flex-row items-center gap-3.5">
-            <View className="size-11 rounded-full bg-[#d94148]/10 items-center justify-center">
-              <UtensilsCrossedIcon size={20} color="#d94148" />
+            <View className="size-11 rounded-full bg-[#dc2626]/10 items-center justify-center">
+              <UtensilsCrossedIcon size={20} color="#dc2626" />
             </View>
             <View>
               <Text className="text-sm font-bold text-neutral-900">
@@ -86,7 +86,7 @@ export function ActiveQueueCard({
 
   return (
     <View className="px-4 mb-4">
-      <View className="bg-white rounded-3xl p-4 border border-neutral-200/90 shadow-md shadow-black/5 gap-3.5">
+      <View className="bg-white rounded-xl p-4 border border-neutral-200/90 shadow-md shadow-black/5 gap-3.5">
         {/* Top Header Row: Restaurant Info & Status Badge */}
         <View className="flex-row items-center gap-3">
           <Image
@@ -114,7 +114,7 @@ export function ActiveQueueCard({
         {/* Live Metrics Row: Wait Time & Position */}
         <View className="flex-row items-center justify-between bg-neutral-50 rounded-2xl p-3 border border-neutral-100">
           <View className="flex-row items-center gap-2">
-            <ClockIcon size={16} color="#d94148" />
+            <ClockIcon size={16} color="#dc2626" />
             <View>
               <Text className="text-sm font-extrabold text-neutral-900 tracking-tight">
                 {entry.waitRange}

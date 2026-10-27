@@ -58,7 +58,7 @@ export default function QueueCancelledScreen() {
       <View
         className="px-5 pb-3 bg-white border-b border-neutral-100 flex-row items-center justify-between"
         style={{ paddingTop: insets.top + 8 }}>
-        <Text className="text-xl font-black text-neutral-900 tracking-tight">
+        <Text className="text-xl font-bold text-neutral-900 tracking-tight">
           Queue Cancelled
         </Text>
 
@@ -74,7 +74,7 @@ export default function QueueCancelledScreen() {
             <XCircleIcon size={44} color="#71717a" />
           </View>
 
-          <Text className="text-2xl font-black text-neutral-900 text-center tracking-tight">
+          <Text className="text-2xl font-bold text-neutral-900 text-center tracking-tight">
             Spot Successfully Released
           </Text>
 
@@ -83,7 +83,7 @@ export default function QueueCancelledScreen() {
           </Text>
 
           {/* Cancellation Receipt Card */}
-          <View className="w-full bg-white rounded-3xl p-5 border border-neutral-100 shadow-sm mt-6 mb-5">
+          <View className="w-full bg-white rounded-xl p-5 border border-neutral-100 shadow-sm mt-6 mb-5">
             <View className="flex-row items-center justify-between pb-3 border-b border-neutral-100">
               <View>
                 <Text className="text-[10px] font-semibold text-neutral-400">Restaurant</Text>
@@ -91,7 +91,7 @@ export default function QueueCancelledScreen() {
               </View>
               <View className="items-end">
                 <Text className="text-[10px] font-semibold text-neutral-400">Released Token</Text>
-                <Text className="text-sm font-black text-neutral-500 line-through">#A12</Text>
+                <Text className="text-sm font-bold text-neutral-500 line-through">#A12</Text>
               </View>
             </View>
 

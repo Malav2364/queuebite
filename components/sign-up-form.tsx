@@ -76,6 +76,8 @@ export function SignUpForm() {
 
       if (signUp.status === 'complete') {
         await signUp.finalize();
+        router.replace('/profile/preferences?onboarding=true');
+        return;
       }
     } catch (err) {
       const message = err instanceof Error ? err.message : 'Something went wrong';
@@ -250,7 +252,7 @@ export function SignUpForm() {
 
           <Text className="text-center text-xs text-neutral-700">
             Already have an account?{' '}
-            <Link href="/(auth)/sign-in" dismissTo className="text-xs font-semibold text-[#d94148]">
+            <Link href="/(auth)/sign-in" dismissTo className="text-xs font-semibold text-[#dc2626]">
               Sign in
             </Link>
           </Text>

@@ -83,7 +83,7 @@ export default function RestaurantPhotoGalleryScreen() {
             <ArrowLeftIcon size={18} color="#18181b" />
           </Pressable>
           <View>
-            <Text className="text-xl font-black text-neutral-900 tracking-tight" numberOfLines={1}>
+            <Text className="text-xl font-bold text-neutral-900 tracking-tight" numberOfLines={1}>
               Photos & Ambience
             </Text>
             <Text className="text-xs text-neutral-500 font-medium">

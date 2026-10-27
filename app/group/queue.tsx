@@ -84,7 +84,7 @@ export default function SharedGroupQueueScreen() {
             <ArrowLeftIcon size={18} color="#18181b" />
           </Pressable>
           <View>
-            <Text className="text-xl font-black text-neutral-900 tracking-tight">
+            <Text className="text-xl font-bold text-neutral-900 tracking-tight">
               Shared Group Queue
             </Text>
             <Text className="text-xs text-neutral-500 font-medium">
@@ -101,7 +101,7 @@ export default function SharedGroupQueueScreen() {
         contentContainerStyle={{ paddingBottom: insets.bottom + 100 }}>
         <View className="px-5 pt-4">
           {/* Restaurant Card */}
-          <View className="bg-white rounded-3xl p-4 border border-neutral-100 shadow-sm flex-row items-center justify-between mb-4">
+          <View className="bg-white rounded-xl p-4 border border-neutral-100 shadow-sm flex-row items-center justify-between mb-4">
             <View className="flex-row items-center gap-3 flex-1 pr-2">
               <Image
                 source={{ uri: group.restaurantImage }}
@@ -130,7 +130,7 @@ export default function SharedGroupQueueScreen() {
           </View>
 
           {/* Position Circular Gauge */}
-          <View className="bg-white rounded-3xl p-6 border border-neutral-100 shadow-sm items-center mb-4">
+          <View className="bg-white rounded-xl p-6 border border-neutral-100 shadow-sm items-center mb-4">
             <View className="relative items-center justify-center mb-3">
               <Svg width={size} height={size}>
                 <Circle
@@ -159,7 +159,7 @@ export default function SharedGroupQueueScreen() {
                 <Text className="text-[10px] font-bold text-neutral-400 uppercase tracking-widest">
                   Group Spot
                 </Text>
-                <Text className="text-5xl font-black text-neutral-900 tracking-tight my-0.5">
+                <Text className="text-5xl font-bold text-neutral-900 tracking-tight my-0.5">
                   #{position}
                 </Text>
                 <Text className="text-[11px] font-bold text-[#dc2626]">
@@ -177,12 +177,12 @@ export default function SharedGroupQueueScreen() {
                   <Text className="text-[10px] text-neutral-500">Host prepping 4-top table</Text>
                 </View>
               </View>
-              <Text className="text-sm font-black text-[#dc2626]">~8 mins</Text>
+              <Text className="text-sm font-bold text-[#dc2626]">~8 mins</Text>
             </View>
           </View>
 
           {/* Group Presence Strip */}
-          <View className="bg-white rounded-3xl p-5 border border-neutral-100 shadow-sm mb-4">
+          <View className="bg-white rounded-xl p-5 border border-neutral-100 shadow-sm mb-4">
             <View className="flex-row items-center justify-between mb-3">
               <View className="flex-row items-center gap-2">
                 <ShieldCheckIcon size={16} color="#059669" />
@@ -232,7 +232,7 @@ export default function SharedGroupQueueScreen() {
                 params: { id: group.restaurantId },
               })
             }
-            className="bg-white rounded-3xl p-4 border border-neutral-100 shadow-sm flex-row items-center justify-between mb-4 active:bg-neutral-50">
+            className="bg-white rounded-xl p-4 border border-neutral-100 shadow-sm flex-row items-center justify-between mb-4 active:bg-neutral-50">
             <View className="flex-row items-center gap-3">
               <View className="size-10 rounded-2xl bg-red-50 items-center justify-center">
                 <UtensilsCrossedIcon size={18} color="#dc2626" />

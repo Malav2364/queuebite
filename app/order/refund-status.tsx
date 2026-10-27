@@ -51,7 +51,7 @@ export default function RefundStatusScreen() {
             <ArrowLeftIcon size={18} color="#18181b" />
           </Pressable>
           <View>
-            <Text className="text-xl font-black text-neutral-900 tracking-tight">
+            <Text className="text-xl font-bold text-neutral-900 tracking-tight">
               Refund Status
             </Text>
             <Text className="text-xs text-neutral-500 font-medium">
@@ -72,7 +72,7 @@ export default function RefundStatusScreen() {
             <RotateCcwIcon size={40} color="#059669" />
           </View>
 
-          <Text className="text-3xl font-black text-neutral-900 tracking-tight">
+          <Text className="text-3xl font-bold text-neutral-900 tracking-tight">
             ₹{refundAmount}
           </Text>
 
@@ -87,7 +87,7 @@ export default function RefundStatusScreen() {
           </Text>
 
           {/* Refund Progress Timeline Card */}
-          <View className="w-full bg-white rounded-3xl p-5 border border-neutral-100 shadow-sm mt-5 mb-4">
+          <View className="w-full bg-white rounded-xl p-5 border border-neutral-100 shadow-sm mt-5 mb-4">
             <Text className="text-xs font-bold text-neutral-900 mb-4">Refund Journey</Text>
 
             {/* Step 1: Approved */}
@@ -159,7 +159,7 @@ export default function RefundStatusScreen() {
           </View>
 
           {/* Refund Details */}
-          <View className="w-full bg-white rounded-3xl p-5 border border-neutral-100 shadow-sm mb-4">
+          <View className="w-full bg-white rounded-xl p-5 border border-neutral-100 shadow-sm mb-4">
             <View className="gap-2.5">
               <View className="flex-row items-center justify-between">
                 <Text className="text-xs text-neutral-500">Destination</Text>

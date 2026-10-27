@@ -130,7 +130,7 @@ export default function NearlyUpScreen() {
             <ArrowLeftIcon size={18} color="#18181b" />
           </Pressable>
           <View>
-            <Text className="text-xl font-black text-neutral-900 tracking-tight">
+            <Text className="text-xl font-bold text-neutral-900 tracking-tight">
               Nearly Up!
             </Text>
             <Text className="text-xs text-orange-600 font-bold">
@@ -147,7 +147,7 @@ export default function NearlyUpScreen() {
         contentContainerStyle={{ paddingBottom: insets.bottom + 120 }}>
         <View className="px-5 pt-5">
           {/* Urgency Pulsing Radar Card */}
-          <View className="bg-white rounded-3xl p-6 border border-orange-200/80 shadow-md shadow-orange-500/10 items-center mb-4">
+          <View className="bg-white rounded-xl p-6 border border-orange-200/80 shadow-md shadow-orange-500/10 items-center mb-4">
             <View className="relative items-center justify-center size-32 mb-4">
               <Animated.View
                 style={{
@@ -165,12 +165,12 @@ export default function NearlyUpScreen() {
             </View>
 
             <View className="px-3 py-1 rounded-full bg-red-100 mb-2">
-              <Text className="text-[11px] font-black text-red-700 uppercase tracking-widest">
+              <Text className="text-[11px] font-bold text-red-700 uppercase tracking-widest">
                 You are next in line!
               </Text>
             </View>
 
-            <Text className="text-3xl font-black text-neutral-900 tracking-tight text-center">
+            <Text className="text-3xl font-bold text-neutral-900 tracking-tight text-center">
               Spot #1 on Waitlist
             </Text>
 
@@ -189,14 +189,14 @@ export default function NearlyUpScreen() {
                 </View>
               </View>
 
-              <Text className="text-xl font-black text-[#dc2626]">
+              <Text className="text-xl font-bold text-[#dc2626]">
                 {minutesRemaining}:{secondsRemaining < 10 ? `0${secondsRemaining}` : secondsRemaining}
               </Text>
             </View>
           </View>
 
           {/* Restaurant & Walking Distance Card */}
-          <View className="bg-white rounded-3xl p-4 border border-neutral-100 shadow-sm mb-4">
+          <View className="bg-white rounded-xl p-4 border border-neutral-100 shadow-sm mb-4">
             <View className="flex-row items-center gap-3">
               <Image
                 source={{ uri: restaurant.image }}
@@ -234,7 +234,7 @@ export default function NearlyUpScreen() {
           </View>
 
           {/* Host Stand Check-In Instructions */}
-          <View className="bg-white rounded-3xl p-5 border border-neutral-100 shadow-sm mb-4">
+          <View className="bg-white rounded-xl p-5 border border-neutral-100 shadow-sm mb-4">
             <Text className="text-xs font-bold text-neutral-900 mb-3">
               Host Stand Check-In Steps
             </Text>

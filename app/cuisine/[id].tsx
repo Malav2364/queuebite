@@ -129,7 +129,7 @@ export default function CuisineResultsScreen() {
                 Cuisine Spotlight
               </Text>
             </View>
-            <Text className="text-3xl font-black text-white tracking-tight">
+            <Text className="text-3xl font-bold text-white tracking-tight">
               {cuisineMeta.name} in Vadodara
             </Text>
             <Text className="text-xs text-white/80 mt-1">
@@ -187,7 +187,7 @@ export default function CuisineResultsScreen() {
                     params: { id: restaurant.id },
                   })
                 }
-                className="bg-white rounded-3xl p-3.5 border border-neutral-100 shadow-xs active:bg-neutral-50">
+                className="bg-white rounded-xl p-3.5 border border-neutral-100 shadow-xs active:bg-neutral-50">
                 <View className="flex-row items-start">
                   <Image
                     source={{ uri: restaurant.image }}

@@ -86,7 +86,10 @@ const MOCK_HISTORY: QueueHistoryEntry[] = [
     id: 'qh-4',
     restaurantId: '4',
     restaurantName: 'Little Italy Trattoria',
-    restaurantImage: MOCK_POPULAR_RESTAURANTS[3].image,
+    restaurantImage:
+      MOCK_POPULAR_RESTAURANTS[3]?.image ||
+      MOCK_POPULAR_RESTAURANTS[0]?.image ||
+      'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?q=80&w=800&auto=format&fit=crop',
     cuisine: 'Woodfired Pizza & Pasta',
     token: 'D03',
     date: 'Oct 14, 8:40 PM',
@@ -130,7 +133,7 @@ export default function QueueHistoryScreen() {
             <ArrowLeftIcon size={18} color="#18181b" />
           </Pressable>
           <View>
-            <Text className="text-xl font-black text-neutral-900 tracking-tight">
+            <Text className="text-xl font-bold text-neutral-900 tracking-tight">
               Queue History
             </Text>
             <Text className="text-xs text-neutral-500 font-medium">
@@ -192,7 +195,7 @@ export default function QueueHistoryScreen() {
         <View className="px-5 pt-3">
           {filteredHistory.length === 0 ? (
             /* Empty State */
-            <View className="bg-white rounded-3xl p-8 border border-neutral-100 shadow-sm items-center my-6">
+            <View className="bg-white rounded-xl p-8 border border-neutral-100 shadow-sm items-center my-6">
               <View className="size-16 rounded-full bg-neutral-100 items-center justify-center mb-3">
                 <UtensilsCrossedIcon size={28} color="#71717a" />
               </View>
@@ -212,7 +215,7 @@ export default function QueueHistoryScreen() {
               return (
                 <View
                   key={item.id}
-                  className="bg-white rounded-3xl p-4 border border-neutral-100 shadow-sm mb-3.5">
+                  className="bg-white rounded-xl p-4 border border-neutral-100 shadow-sm mb-3.5">
                   {/* Top Bar: Restaurant & Status */}
                   <View className="flex-row items-center justify-between pb-3 border-b border-neutral-100">
                     <View className="flex-row items-center gap-3 flex-1 pr-2">
@@ -272,7 +275,7 @@ export default function QueueHistoryScreen() {
                       </View>
                     </View>
 
-                    <Text className="text-xs font-black text-neutral-800">
+                    <Text className="text-xs font-bold text-neutral-800">
                       Token #{item.token}
                     </Text>
                   </View>

@@ -72,7 +72,7 @@ export function RestaurantCard({
   return (
     <Pressable
       onPress={() => onPress(restaurant)}
-      className="bg-white rounded-3xl overflow-hidden border border-neutral-200/90 shadow-sm active:opacity-95 mb-4">
+      className="bg-white rounded-xl overflow-hidden border border-neutral-200/90 shadow-sm active:opacity-95 mb-4">
       {/* Hero Cover Image */}
       <View className="relative h-44 w-full bg-neutral-200">
         <Image
@@ -99,8 +99,8 @@ export function RestaurantCard({
             className="size-9 rounded-full bg-white/90 active:bg-white items-center justify-center shadow-xs">
             <HeartIcon
               size={17}
-              color={isFavorite ? '#d94148' : '#262626'}
-              fill={isFavorite ? '#d94148' : 'none'}
+              color={isFavorite ? '#dc2626' : '#262626'}
+              fill={isFavorite ? '#dc2626' : 'none'}
             />
           </Pressable>
         </View>
@@ -180,7 +180,7 @@ export function RestaurantCard({
             className={`px-5 py-2.5 rounded-xl flex-row items-center justify-center ${
               joinDisabled
                 ? 'bg-neutral-100 border border-neutral-200 opacity-60'
-                : 'bg-[#d94148] active:bg-[#c2363d] shadow-sm'
+                : 'bg-[#dc2626] active:bg-[#b91c1c] shadow-sm'
             }`}>
             <Text
               className={`text-xs font-bold uppercase tracking-wider ${

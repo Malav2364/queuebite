@@ -49,7 +49,7 @@ export function TrendingThisWeek({
             <Pressable
               key={restaurant.id}
               onPress={() => onSelectRestaurant(restaurant)}
-              className="w-56 bg-white rounded-2xl overflow-hidden border border-neutral-100 shadow-sm active:opacity-95">
+              className="w-56 bg-white rounded-xl overflow-hidden border border-neutral-100 shadow-sm active:opacity-95">
               {/* Cover Image */}
               <View className="relative h-32 w-full bg-neutral-200">
                 <Image

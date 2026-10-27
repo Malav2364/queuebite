@@ -1,66 +1,250 @@
 import { Text } from '@/components/ui/text';
-import { ArrowRightIcon } from 'lucide-react-native';
+import { MOCK_POPULAR_RESTAURANTS } from '@/lib/mock-data';
+import { ArrowRightIcon, StarIcon } from 'lucide-react-native';
 import * as React from 'react';
-import { Image, Pressable, View } from 'react-native';
+import {
+  Dimensions,
+  FlatList,
+  Image,
+  NativeScrollEvent,
+  NativeSyntheticEvent,
+  Pressable,
+  StyleSheet,
+  View,
+} from 'react-native';
+import Svg, { Defs, LinearGradient, Rect, Stop } from 'react-native-svg';
+
+const { width: SCREEN_WIDTH } = Dimensions.get('window');
 
 interface HeroPromoBannerProps {
-  onExplorePress: () => void;
+  onExplorePress?: () => void;
+  onRestaurantPress?: (restaurantId: string) => void;
 }
 
-export function HeroPromoBanner({ onExplorePress }: HeroPromoBannerProps) {
-  const [activePage, setActivePage] = React.useState(0);
+interface CarouselSlide {
+  id: string;
+  restaurantId: string;
+  name: string;
+  image: string;
+  cuisine: string;
+  address: string;
+  rating: number;
+  waitRange: string;
+  partiesAhead: number;
+  ctaText: string;
+}
+
+const CAROUSEL_SLIDES: CarouselSlide[] = [
+  {
+    id: 'slide-1',
+    restaurantId: 'pop-1',
+    name: 'The Daily Bean',
+    image:
+      'https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=1200&auto=format&fit=crop',
+    cuisine: 'Specialty Coffee & Bakes',
+    address: 'Alkapuri',
+    rating: 4.5,
+    waitRange: '10–20m wait',
+    partiesAhead: 8,
+    ctaText: 'Join Waitlist',
+  },
+  {
+    id: 'slide-2',
+    restaurantId: 'pop-2',
+    name: 'Peshawri Royal',
+    image:
+      'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=1200&auto=format&fit=crop',
+    cuisine: 'North Indian & Mughlai',
+    address: 'Sayajigunj',
+    rating: 4.8,
+    waitRange: '20–30m wait',
+    partiesAhead: 6,
+    ctaText: 'Join Queue',
+  },
+  {
+    id: 'slide-3',
+    restaurantId: 'pop-4',
+    name: 'Little Italy Trattoria',
+    image:
+      'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?q=80&w=1200&auto=format&fit=crop',
+    cuisine: 'Woodfired Pizza & Pasta',
+    address: 'Akota',
+    rating: 4.4,
+    waitRange: '15–20m wait',
+    partiesAhead: 3,
+    ctaText: 'View Restaurant',
+  },
+  {
+    id: 'slide-4',
+    restaurantId: 'pop-3',
+    name: 'Spice Villa',
+    image:
+      'https://images.unsplash.com/photo-1552566626-52f8b828add9?q=80&w=1200&auto=format&fit=crop',
+    cuisine: 'Kathiyawadi & Gujarati Thali',
+    address: 'Manjalpur',
+    rating: 4.6,
+    waitRange: '25–35m wait',
+    partiesAhead: 9,
+    ctaText: 'Explore Menu',
+  },
+];
+
+export function HeroPromoBanner({
+  onExplorePress,
+  onRestaurantPress,
+}: HeroPromoBannerProps) {
+  const [activeIndex, setActiveIndex] = React.useState(0);
+  const flatListRef = React.useRef<FlatList>(null);
+  const isInteracting = React.useRef(false);
+
+  // Auto-scroll carousel every 4.5 seconds
+  React.useEffect(() => {
+    const timer = setInterval(() => {
+      if (isInteracting.current) return;
+      const nextIndex = (activeIndex + 1) % CAROUSEL_SLIDES.length;
+      flatListRef.current?.scrollToIndex({
+        index: nextIndex,
+        animated: true,
+      });
+      setActiveIndex(nextIndex);
+    }, 4500);
+
+    return () => clearInterval(timer);
+  }, [activeIndex]);
+
+  function handleMomentumScrollEnd(e: NativeSyntheticEvent<NativeScrollEvent>) {
+    const offsetX = e.nativeEvent.contentOffset.x;
+    const newIndex = Math.round(offsetX / SCREEN_WIDTH);
+    if (newIndex >= 0 && newIndex < CAROUSEL_SLIDES.length) {
+      setActiveIndex(newIndex);
+    }
+    isInteracting.current = false;
+  }
+
+  function handleSlidePress(slide: CarouselSlide) {
+    if (onRestaurantPress) {
+      onRestaurantPress(slide.restaurantId);
+    } else if (onExplorePress) {
+      onExplorePress();
+    }
+  }
 
   return (
-    <View className="px-5 pt-1 pb-3">
-      {/* Banner Card */}
-      <View className="relative bg-[#fef4ec] rounded-3xl p-5 overflow-hidden border border-[#fae2d0] shadow-xs">
-        <View className="flex-row items-center justify-between">
-          {/* Left Text Content */}
-          <View className="flex-1 pr-2 z-10">
-            <Text className="text-[11px] font-extrabold text-[#c2410c] uppercase tracking-wider mb-1">
-              SKIP THE WAIT
-            </Text>
-
-            <Text className="text-[22px] font-extrabold text-neutral-900 leading-[26px]">
-              Good Food
-            </Text>
-            <Text className="text-[22px] font-extrabold text-[#dc2626] leading-[26px]">
-              Without the Queue
-            </Text>
-
-            <Text className="text-xs text-neutral-600 mt-2 mb-4 leading-[16px] max-w-[190px]">
-              Check live queues, join remotely and get notified when it&apos;s your turn.
-            </Text>
-
-            <Pressable
-              onPress={onExplorePress}
-              className="flex-row items-center justify-center gap-1.5 bg-[#dc2626] active:bg-[#b91c1c] self-start px-4 py-2.5 rounded-full shadow-sm">
-              <Text className="text-xs font-bold text-white">
-                Explore Nearby
-              </Text>
-              <ArrowRightIcon size={14} color="#ffffff" />
-            </Pressable>
-          </View>
-
-          {/* Right Image Content: Gourmet Pasta Dish */}
-          <View className="size-36 rounded-full overflow-hidden shadow-md border-2 border-white/80">
+    <View className="w-full mb-3" style={{ borderRadius: 0 }}>
+      {/* End-to-End Carousel: Full screen width, 0 corner radius */}
+      <FlatList
+        ref={flatListRef}
+        data={CAROUSEL_SLIDES}
+        horizontal
+        pagingEnabled
+        showsHorizontalScrollIndicator={false}
+        keyExtractor={(item) => item.id}
+        onScrollBeginDrag={() => {
+          isInteracting.current = true;
+        }}
+        onMomentumScrollEnd={handleMomentumScrollEnd}
+        renderItem={({ item }) => (
+          <Pressable
+            onPress={() => handleSlidePress(item)}
+            style={{ width: SCREEN_WIDTH, height: 230, borderRadius: 0 }}
+            className="relative overflow-hidden bg-neutral-900 active:opacity-95">
+            {/* Background Image */}
             <Image
-              source={{
-                uri: 'https://images.unsplash.com/photo-1621996346565-e3d5d6281691?q=80&w=600&auto=format&fit=crop',
-              }}
-              className="w-full h-full"
+              source={{ uri: item.image }}
+              style={{ width: SCREEN_WIDTH, height: 230, borderRadius: 0 }}
               resizeMode="cover"
             />
-          </View>
-        </View>
-      </View>
 
-      {/* Pagination Indicator Dots */}
-      <View className="flex-row items-center justify-center gap-1.5 mt-2.5">
-        <View className="w-5 h-2 rounded-full bg-[#dc2626]" />
-        <View className="size-2 rounded-full bg-neutral-300" />
-        <View className="size-2 rounded-full bg-neutral-300" />
-        <View className="size-2 rounded-full bg-neutral-300" />
+            {/* Smooth Cinema Gradient Overlay */}
+            <Svg
+              height="230"
+              width={SCREEN_WIDTH}
+              style={StyleSheet.absoluteFill}>
+              <Defs>
+                <LinearGradient id="heroGradient" x1="0" y1="0" x2="0" y2="1">
+                  <Stop offset="0" stopColor="#000000" stopOpacity="0.15" />
+                  <Stop offset="0.4" stopColor="#000000" stopOpacity="0.25" />
+                  <Stop offset="0.75" stopColor="#000000" stopOpacity="0.78" />
+                  <Stop offset="1" stopColor="#000000" stopOpacity="0.94" />
+                </LinearGradient>
+              </Defs>
+              <Rect width={SCREEN_WIDTH} height="230" fill="url(#heroGradient)" />
+            </Svg>
+
+            {/* Bottom Content: Clean Authentic Info + CTA Button */}
+            <View className="absolute bottom-4 left-4 right-4 z-10">
+              <View className="flex-row items-end justify-between">
+                {/* Left Info Column */}
+                <View className="flex-1 mr-3">
+                  {/* Restaurant Name + Rating */}
+                  <View className="flex-row items-center gap-2">
+                    <Text
+                      className="text-xl font-bold text-white tracking-tight"
+                      numberOfLines={1}>
+                      {item.name}
+                    </Text>
+                    <View className="flex-row items-center gap-1 bg-black/40 px-1.5 py-0.5 rounded border border-white/20">
+                      <StarIcon size={11} color="#f59e0b" fill="#f59e0b" />
+                      <Text className="text-[11px] font-bold text-white">
+                        {item.rating}
+                      </Text>
+                    </View>
+                  </View>
+
+                  {/* Cuisine & Location */}
+                  <Text
+                    className="text-[12px] text-neutral-200 mt-1 font-medium"
+                    numberOfLines={1}>
+                    {item.cuisine} • {item.address}
+                  </Text>
+
+                  {/* Live Wait Status with clean indicator */}
+                  <View className="flex-row items-center gap-1.5 mt-1.5">
+                    <View className="size-2 rounded-full bg-emerald-400" />
+                    <Text className="text-[11px] font-semibold text-emerald-300">
+                      {item.waitRange} • {item.partiesAhead} ahead in line
+                    </Text>
+                  </View>
+                </View>
+
+                {/* Right Action Button */}
+                <Pressable
+                  onPress={() => handleSlidePress(item)}
+                  className="bg-[#dc2626] active:bg-[#b91c1c] px-3.5 py-2.5 flex-row items-center gap-1.5 shadow-md">
+                  <Text className="text-xs font-bold text-white">
+                    {item.ctaText}
+                  </Text>
+                  <ArrowRightIcon size={13} color="#ffffff" />
+                </Pressable>
+              </View>
+            </View>
+          </Pressable>
+        )}
+      />
+
+      {/* Pagination Line / Dots Indicator */}
+      <View className="flex-row items-center justify-center gap-1.5 mt-2">
+        {CAROUSEL_SLIDES.map((_, index) => {
+          const isActive = index === activeIndex;
+          return (
+            <Pressable
+              key={`dot-${index}`}
+              onPress={() => {
+                flatListRef.current?.scrollToIndex({
+                  index,
+                  animated: true,
+                });
+                setActiveIndex(index);
+              }}
+              style={{
+                width: isActive ? 20 : 6,
+                height: 4,
+                backgroundColor: isActive ? '#dc2626' : '#d4d4d8',
+                borderRadius: 2,
+              }}
+            />
+          );
+        })}
       </View>
     </View>
   );

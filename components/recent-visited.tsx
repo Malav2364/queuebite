@@ -25,7 +25,7 @@ export function RecentVisited({
   return (
     <View className="mb-5">
       <View className="px-4 mb-2 flex-row items-center gap-1.5">
-        <RotateCcwIcon size={14} color="#d94148" />
+        <RotateCcwIcon size={14} color="#dc2626" />
         <Text className="text-base font-bold text-neutral-900 tracking-tight">
           Recently visited
         </Text>
@@ -57,7 +57,7 @@ export function RecentVisited({
 
               <View className="flex-row items-center justify-between">
                 <View className="flex-row items-center gap-1">
-                  <ClockIcon size={11} color="#d94148" />
+                  <ClockIcon size={11} color="#dc2626" />
                   <Text className="text-[10px] font-bold text-neutral-800">
                     {item.waitRange}
                   </Text>
@@ -67,7 +67,7 @@ export function RecentVisited({
                     e.stopPropagation();
                     onJoinQueuePress(item);
                   }}
-                  className="bg-[#d94148] px-2 py-1 rounded-lg">
+                  className="bg-[#dc2626] px-2 py-1 rounded-lg">
                   <Text className="text-[9px] font-bold text-white uppercase">Re-join</Text>
                 </Pressable>
               </View>

@@ -65,7 +65,7 @@ export function PopularNearYou({
             <Pressable
               key={restaurant.id}
               onPress={() => onSelectRestaurant(restaurant)}
-              className="w-44 bg-white rounded-2xl overflow-hidden border border-neutral-100 shadow-sm active:opacity-95">
+              className="w-44 bg-white rounded-xl overflow-hidden border border-neutral-100 shadow-sm active:opacity-95">
               {/* Cover Image & Overlays */}
               <View className="relative h-28 w-full bg-neutral-200">
                 <Image

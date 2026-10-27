@@ -112,7 +112,7 @@ export default function InviteFriendsScreen() {
             <ArrowLeftIcon size={18} color="#18181b" />
           </Pressable>
           <View>
-            <Text className="text-xl font-black text-neutral-900 tracking-tight">
+            <Text className="text-xl font-bold text-neutral-900 tracking-tight">
               Invite Friends
             </Text>
             <Text className="text-xs text-neutral-500 font-medium">
@@ -129,12 +129,12 @@ export default function InviteFriendsScreen() {
         contentContainerStyle={{ paddingBottom: insets.bottom + 90 }}>
         <View className="px-5 pt-4">
           {/* Main Invite Code Card */}
-          <View className="bg-white rounded-3xl p-6 border border-neutral-100 shadow-sm mb-4 items-center">
+          <View className="bg-white rounded-xl p-6 border border-neutral-100 shadow-sm mb-4 items-center">
             <Text className="text-[10px] font-bold text-neutral-400 uppercase tracking-widest">
               Group Invite Code
             </Text>
 
-            <Text className="text-4xl font-black text-neutral-900 tracking-widest my-2">
+            <Text className="text-4xl font-bold text-neutral-900 tracking-widest my-2">
               {inviteCode}
             </Text>
 
@@ -182,7 +182,7 @@ export default function InviteFriendsScreen() {
           </View>
 
           {/* Quick Contacts List */}
-          <View className="bg-white rounded-3xl p-5 border border-neutral-100 shadow-sm mb-4">
+          <View className="bg-white rounded-xl p-5 border border-neutral-100 shadow-sm mb-4">
             <View className="flex-row items-center justify-between mb-3">
               <View className="flex-row items-center gap-2">
                 <UsersIcon size={16} color="#dc2626" />

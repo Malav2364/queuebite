@@ -95,7 +95,7 @@ export default function MyQueueOverviewScreen() {
             <ArrowLeftIcon size={18} color="#18181b" />
           </Pressable>
           <View>
-            <Text className="text-xl font-black text-neutral-900 tracking-tight">
+            <Text className="text-xl font-bold text-neutral-900 tracking-tight">
               My Live Queue
             </Text>
             <Text className="text-xs text-neutral-500 font-medium">
@@ -130,7 +130,7 @@ export default function MyQueueOverviewScreen() {
             <View className="size-20 rounded-full bg-red-50 items-center justify-center mb-4">
               <UtensilsCrossedIcon size={36} color="#dc2626" />
             </View>
-            <Text className="text-xl font-black text-neutral-900 text-center">
+            <Text className="text-xl font-bold text-neutral-900 text-center">
               No Active Queue
             </Text>
             <Text className="text-xs text-neutral-500 text-center mt-1.5 max-w-[260px] leading-relaxed">
@@ -165,7 +165,7 @@ export default function MyQueueOverviewScreen() {
                   params: { id: restaurant.id },
                 })
               }
-              className="bg-white rounded-3xl p-4 border border-neutral-100 shadow-sm flex-row items-center justify-between mb-4 active:bg-neutral-50">
+              className="bg-white rounded-xl p-4 border border-neutral-100 shadow-sm flex-row items-center justify-between mb-4 active:bg-neutral-50">
               <View className="flex-row items-center gap-3 flex-1 pr-2">
                 <Image
                   source={{ uri: restaurant.image }}
@@ -201,7 +201,7 @@ export default function MyQueueOverviewScreen() {
             </Pressable>
 
             {/* 2. Position Circular Gauge Card */}
-            <View className="bg-white rounded-3xl p-6 border border-neutral-100 shadow-sm items-center mb-4">
+            <View className="bg-white rounded-xl p-6 border border-neutral-100 shadow-sm items-center mb-4">
               <View className="relative items-center justify-center mb-3">
                 <Svg width={size} height={size}>
                   {/* Background Track */}
@@ -233,7 +233,7 @@ export default function MyQueueOverviewScreen() {
                   <Text className="text-[10px] font-bold text-neutral-400 uppercase tracking-widest">
                     Your Spot
                   </Text>
-                  <Text className="text-5xl font-black text-neutral-900 tracking-tight my-0.5">
+                  <Text className="text-5xl font-bold text-neutral-900 tracking-tight my-0.5">
                     #{position}
                   </Text>
                   <Text className="text-[11px] font-bold text-[#dc2626]">
@@ -253,16 +253,16 @@ export default function MyQueueOverviewScreen() {
                     <Text className="text-[10px] text-neutral-500">Based on live table turnover</Text>
                   </View>
                 </View>
-                <Text className="text-sm font-black text-[#dc2626]">~12 mins</Text>
+                <Text className="text-sm font-bold text-[#dc2626]">~12 mins</Text>
               </View>
             </View>
 
             {/* 3. Ticket Info & Quick Actions */}
-            <View className="bg-white rounded-3xl p-4 border border-neutral-100 shadow-sm mb-4">
+            <View className="bg-white rounded-xl p-4 border border-neutral-100 shadow-sm mb-4">
               <View className="flex-row items-center justify-between pb-3 border-b border-neutral-100">
                 <View>
                   <Text className="text-[10px] font-semibold text-neutral-400">Queue Token</Text>
-                  <Text className="text-lg font-black text-neutral-900">A12</Text>
+                  <Text className="text-lg font-bold text-neutral-900">A12</Text>
                 </View>
 
                 <View>
@@ -352,7 +352,7 @@ export default function MyQueueOverviewScreen() {
             </View>
 
             {/* 4. Queue Stage Stepper */}
-            <View className="bg-white rounded-3xl p-4 border border-neutral-100 shadow-sm mb-4">
+            <View className="bg-white rounded-xl p-4 border border-neutral-100 shadow-sm mb-4">
               <Text className="text-xs font-bold text-neutral-900 mb-3">Live Queue Milestones</Text>
 
               {/* Step 1: Confirmed */}
@@ -446,7 +446,7 @@ export default function MyQueueOverviewScreen() {
           if (tab === 'HOME') router.push('/');
           else if (tab === 'EXPLORE') router.push('/explore');
           else if (tab === 'SAVED') router.push('/saved');
-          else if (tab === 'PROFILE') Alert.alert('Profile', 'Signed in as Malav.');
+          else if (tab === 'PROFILE') router.push('/profile/overview');
         }}
         hasActiveQueue={hasActiveQueue}
       />

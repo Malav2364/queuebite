@@ -143,7 +143,7 @@ export default function RestaurantMenuScreen() {
             <ArrowLeftIcon size={18} color="#18181b" />
           </Pressable>
           <View>
-            <Text className="text-xl font-black text-neutral-900 tracking-tight" numberOfLines={1}>
+            <Text className="text-xl font-bold text-neutral-900 tracking-tight" numberOfLines={1}>
               {restaurant.name} Menu
             </Text>
             <Text className="text-xs text-neutral-500 font-medium">
@@ -214,7 +214,7 @@ export default function RestaurantMenuScreen() {
                   params: { id: restaurant.id, dishId: dish.id },
                 })
               }
-              className="bg-white rounded-3xl p-4 border border-neutral-100 shadow-xs flex-row items-start justify-between active:bg-neutral-50">
+              className="bg-white rounded-xl p-4 border border-neutral-100 shadow-xs flex-row items-start justify-between active:bg-neutral-50">
               {/* Left Info */}
               <View className="flex-1 pr-3">
                 <View className="flex-row items-center gap-2 mb-1">
@@ -263,7 +263,7 @@ export default function RestaurantMenuScreen() {
         style={{ paddingBottom: insets.bottom + 8 }}>
         <View>
           <Text className="text-xs text-neutral-500 font-medium">Ready to dine?</Text>
-          <Text className="text-sm font-black text-neutral-900">
+          <Text className="text-sm font-bold text-neutral-900">
             Wait: {restaurant.waitRange}
           </Text>
         </View>

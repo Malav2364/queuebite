@@ -99,7 +99,7 @@ export default function DishCustomizationScreen() {
             <XIcon size={18} color="#18181b" />
           </Pressable>
           <View>
-            <Text className="text-xl font-black text-neutral-900 tracking-tight">
+            <Text className="text-xl font-bold text-neutral-900 tracking-tight">
               Customize Dish
             </Text>
             <Text className="text-xs text-neutral-500 font-medium">
@@ -130,10 +130,10 @@ export default function DishCustomizationScreen() {
               <Text className="text-xs font-bold text-emerald-800">Pure Vegetarian</Text>
             </View>
 
-            <Text className="text-2xl font-black text-neutral-900 tracking-tight">
+            <Text className="text-2xl font-bold text-neutral-900 tracking-tight">
               {dish.name}
             </Text>
-            <Text className="text-base font-black text-[#dc2626] my-1">
+            <Text className="text-base font-bold text-[#dc2626] my-1">
               ₹{dish.basePrice}
             </Text>
             <Text className="text-xs text-neutral-600 leading-relaxed">
@@ -144,7 +144,7 @@ export default function DishCustomizationScreen() {
 
         <View className="px-5 pt-4">
           {/* Section 1: Portion Size */}
-          <View className="bg-white rounded-3xl p-5 border border-neutral-100 shadow-sm mb-4">
+          <View className="bg-white rounded-xl p-5 border border-neutral-100 shadow-sm mb-4">
             <View className="flex-row items-center justify-between mb-3">
               <View>
                 <Text className="text-xs font-bold text-neutral-900">Portion Size</Text>
@@ -190,7 +190,7 @@ export default function DishCustomizationScreen() {
           </View>
 
           {/* Section 2: Spice Level */}
-          <View className="bg-white rounded-3xl p-5 border border-neutral-100 shadow-sm mb-4">
+          <View className="bg-white rounded-xl p-5 border border-neutral-100 shadow-sm mb-4">
             <View className="flex-row items-center justify-between mb-3">
               <View>
                 <Text className="text-xs font-bold text-neutral-900">Spice Preference</Text>
@@ -227,7 +227,7 @@ export default function DishCustomizationScreen() {
           </View>
 
           {/* Section 3: Add-Ons */}
-          <View className="bg-white rounded-3xl p-5 border border-neutral-100 shadow-sm mb-4">
+          <View className="bg-white rounded-xl p-5 border border-neutral-100 shadow-sm mb-4">
             <Text className="text-xs font-bold text-neutral-900 mb-1">
               Optional Add-Ons
             </Text>
@@ -272,7 +272,7 @@ export default function DishCustomizationScreen() {
           </View>
 
           {/* Section 4: Kitchen Notes */}
-          <View className="bg-white rounded-3xl p-5 border border-neutral-100 shadow-sm mb-4">
+          <View className="bg-white rounded-xl p-5 border border-neutral-100 shadow-sm mb-4">
             <Text className="text-xs font-bold text-neutral-900 mb-1">
               Special Instructions to Chef
             </Text>
@@ -302,7 +302,7 @@ export default function DishCustomizationScreen() {
             className="size-7 rounded-xl bg-white items-center justify-center active:bg-neutral-200">
             <MinusIcon size={14} color="#18181b" />
           </Pressable>
-          <Text className="text-sm font-black text-neutral-900 min-w-[20px] text-center">
+          <Text className="text-sm font-bold text-neutral-900 min-w-[20px] text-center">
             {quantity}
           </Text>
           <Pressable
@@ -319,7 +319,7 @@ export default function DishCustomizationScreen() {
           <Text className="text-xs font-bold text-white tracking-wide">
             Add to Pre-Order
           </Text>
-          <Text className="text-sm font-black text-white">₹{totalPrice}</Text>
+          <Text className="text-sm font-bold text-white">₹{totalPrice}</Text>
         </Pressable>
       </View>
     </View>

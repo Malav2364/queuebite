@@ -108,7 +108,7 @@ export default function ManageGroupMembersScreen() {
             <ArrowLeftIcon size={18} color="#18181b" />
           </Pressable>
           <View>
-            <Text className="text-xl font-black text-neutral-900 tracking-tight">
+            <Text className="text-xl font-bold text-neutral-900 tracking-tight">
               Manage Members
             </Text>
             <Text className="text-xs text-neutral-500 font-medium">
@@ -125,7 +125,7 @@ export default function ManageGroupMembersScreen() {
         contentContainerStyle={{ paddingBottom: insets.bottom + 100 }}>
         <View className="px-5 pt-4">
           {/* Lock Group Size Toggle */}
-          <View className="bg-white rounded-3xl p-5 border border-neutral-100 shadow-sm mb-4 flex-row items-center justify-between">
+          <View className="bg-white rounded-xl p-5 border border-neutral-100 shadow-sm mb-4 flex-row items-center justify-between">
             <View className="flex-1 pr-3">
               <View className="flex-row items-center gap-1.5">
                 <LockIcon size={14} color="#18181b" />
@@ -145,7 +145,7 @@ export default function ManageGroupMembersScreen() {
           </View>
 
           {/* Members List */}
-          <View className="bg-white rounded-3xl p-5 border border-neutral-100 shadow-sm mb-4">
+          <View className="bg-white rounded-xl p-5 border border-neutral-100 shadow-sm mb-4">
             <View className="flex-row items-center justify-between mb-3">
               <Text className="text-xs font-bold text-neutral-900">
                 Party Roster ({members.length} Diners)
@@ -219,7 +219,7 @@ export default function ManageGroupMembersScreen() {
           </View>
 
           {/* Group Dietary Requirements Summary */}
-          <View className="bg-white rounded-3xl p-5 border border-neutral-100 shadow-sm mb-4">
+          <View className="bg-white rounded-xl p-5 border border-neutral-100 shadow-sm mb-4">
             <View className="flex-row items-center gap-2 mb-2">
               <UtensilsCrossedIcon size={16} color="#dc2626" />
               <Text className="text-xs font-bold text-neutral-900">

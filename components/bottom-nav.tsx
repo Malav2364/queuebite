@@ -64,39 +64,19 @@ export function BottomNav({
           </Text>
         </Pressable>
 
-        {/* 3. Center Floating Elevated Button: My Queue */}
+        {/* 3. My Queue Tab */}
         <Pressable
           onPress={() => onTabChange('MY_QUEUE')}
-          className="items-center justify-end py-1 flex-1 relative active:scale-95"
-          hitSlop={{ top: 12, bottom: 8, left: 8, right: 8 }}>
-          {/* Elevated Circular Red Button */}
-          <View
-            style={{
-              position: 'absolute',
-              top: -22,
-              width: 56,
-              height: 56,
-              borderRadius: 28,
-              backgroundColor: '#dc2626',
-              alignItems: 'center',
-              justifyContent: 'center',
-              borderWidth: 3,
-              borderColor: '#ffffff',
-              shadowColor: '#dc2626',
-              shadowOffset: { width: 0, height: 4 },
-              shadowOpacity: 0.35,
-              shadowRadius: 8,
-              elevation: 8,
-            }}>
-            <UsersIcon size={26} color="#ffffff" strokeWidth={2.3} />
+          className="items-center justify-center py-1 flex-1 active:opacity-70">
+          <View className="relative">
+            <UsersIcon
+              size={22}
+              color={activeTab === 'MY_QUEUE' ? '#dc2626' : '#71717a'}
+            />
             {hasActiveQueue && (
-              <View className="absolute top-1 right-1 size-3 rounded-full bg-emerald-500 border-2 border-white" />
+              <View className="absolute -top-1 -right-1 size-2 rounded-full bg-emerald-500 border border-white" />
             )}
           </View>
-
-          {/* Invisible spacer to match normal icon height so label is perfectly aligned */}
-          <View style={{ height: 22 }} />
-
           <Text
             className={`text-[10px] mt-1 font-semibold ${
               activeTab === 'MY_QUEUE' ? 'text-[#dc2626]' : 'text-neutral-500'
@@ -108,7 +88,7 @@ export function BottomNav({
         {/* 4. Saved Tab */}
         <Pressable
           onPress={() => onTabChange('SAVED')}
-          className="items-center justify-end py-1 flex-1 active:opacity-70">
+          className="items-center justify-center py-1 flex-1 active:opacity-70">
           <HeartIcon
             size={22}
             color={activeTab === 'SAVED' ? '#dc2626' : '#71717a'}
@@ -124,7 +104,7 @@ export function BottomNav({
         {/* 5. Profile Tab */}
         <Pressable
           onPress={() => onTabChange('PROFILE')}
-          className="items-center justify-end py-1 flex-1 active:opacity-70">
+          className="items-center justify-center py-1 flex-1 active:opacity-70">
           <UserIcon
             size={22}
             color={activeTab === 'PROFILE' ? '#dc2626' : '#71717a'}

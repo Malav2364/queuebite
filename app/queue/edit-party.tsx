@@ -80,7 +80,7 @@ export default function EditPartySizeScreen() {
             <ArrowLeftIcon size={18} color="#18181b" />
           </Pressable>
           <View>
-            <Text className="text-xl font-black text-neutral-900 tracking-tight">
+            <Text className="text-xl font-bold text-neutral-900 tracking-tight">
               Edit Party Size
             </Text>
             <Text className="text-xs text-neutral-500 font-medium">
@@ -97,7 +97,7 @@ export default function EditPartySizeScreen() {
         contentContainerStyle={{ paddingBottom: insets.bottom + 100 }}>
         <View className="px-5 pt-5">
           {/* Main Party Size Selector Card */}
-          <View className="bg-white rounded-3xl p-6 border border-neutral-100 shadow-sm mb-4 items-center">
+          <View className="bg-white rounded-xl p-6 border border-neutral-100 shadow-sm mb-4 items-center">
             <View className="size-12 rounded-2xl bg-red-50 items-center justify-center mb-3">
               <UsersIcon size={22} color="#dc2626" />
             </View>
@@ -119,7 +119,7 @@ export default function EditPartySizeScreen() {
               </Pressable>
 
               <View className="items-center min-w-[80px]">
-                <Text className="text-5xl font-black text-neutral-900 tracking-tight">
+                <Text className="text-5xl font-bold text-neutral-900 tracking-tight">
                   {partySize}
                 </Text>
                 <Text className="text-xs font-semibold text-neutral-400 mt-0.5">
@@ -166,7 +166,7 @@ export default function EditPartySizeScreen() {
               </View>
 
               <Text
-                className={`text-xs font-black ${
+                className={`text-xs font-bold ${
                   sizeDiff === 0
                     ? 'text-neutral-600'
                     : sizeDiff > 0
@@ -183,7 +183,7 @@ export default function EditPartySizeScreen() {
           </View>
 
           {/* Seating Type Preference */}
-          <View className="bg-white rounded-3xl p-5 border border-neutral-100 shadow-sm mb-4">
+          <View className="bg-white rounded-xl p-5 border border-neutral-100 shadow-sm mb-4">
             <Text className="text-xs font-bold text-neutral-900 mb-1">
               Seating Preference
             </Text>
@@ -249,7 +249,7 @@ export default function EditPartySizeScreen() {
           </View>
 
           {/* High Chairs / Children */}
-          <View className="bg-white rounded-3xl p-5 border border-neutral-100 shadow-sm mb-4">
+          <View className="bg-white rounded-xl p-5 border border-neutral-100 shadow-sm mb-4">
             <View className="flex-row items-center justify-between">
               <View className="flex-row items-center gap-3">
                 <View className="size-10 rounded-2xl bg-amber-50 items-center justify-center">
@@ -275,7 +275,7 @@ export default function EditPartySizeScreen() {
                   <MinusIcon size={14} color="#18181b" />
                 </Pressable>
 
-                <Text className="text-sm font-black text-neutral-900 w-6 text-center">
+                <Text className="text-sm font-bold text-neutral-900 w-6 text-center">
                   {highChairs}
                 </Text>
 

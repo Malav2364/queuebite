@@ -133,23 +133,23 @@ export default function NotificationsScreen() {
 
       {/* Header */}
       <View
-        className="px-5 pb-3 bg-white border-b border-neutral-100 flex-row items-center justify-between"
+        className="px-5 pb-3 bg-white border-b border-neutral-200/80 flex-row items-center justify-between"
         style={{ paddingTop: insets.top + 8 }}>
         <View className="flex-row items-center gap-3">
           <Pressable
             onPress={() => router.back()}
-            className="size-9 rounded-full bg-neutral-100 items-center justify-center active:bg-neutral-200"
+            className="size-9 rounded-lg bg-neutral-100 items-center justify-center active:bg-neutral-200"
             hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}>
             <ArrowLeftIcon size={18} color="#18181b" />
           </Pressable>
           <View>
             <View className="flex-row items-center gap-2">
-              <Text className="text-xl font-black text-neutral-900 tracking-tight">
+              <Text className="text-xl font-bold text-neutral-900 tracking-tight">
                 Notifications
               </Text>
               {unreadCount > 0 && (
-                <View className="px-2 py-0.5 rounded-full bg-[#dc2626]">
-                  <Text className="text-[10px] font-black text-white">{unreadCount} New</Text>
+                <View className="px-1.5 py-0.5 rounded bg-[#dc2626]">
+                  <Text className="text-[10px] font-bold text-white">{unreadCount} new</Text>
                 </View>
               )}
             </View>
@@ -159,25 +159,15 @@ export default function NotificationsScreen() {
           </View>
         </View>
 
-        <View className="flex-row items-center gap-2">
-          {unreadCount > 0 && (
-            <Pressable
-              onPress={markAllAsRead}
-              className="size-9 rounded-full bg-neutral-100 items-center justify-center active:bg-neutral-200"
-              hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}>
-              <CheckCheckIcon size={16} color="#18181b" />
-            </Pressable>
-          )}
-          <BrandLogo size="sm" />
-        </View>
+        <BrandLogo size="sm" />
       </View>
 
       <ScrollView
         showsVerticalScrollIndicator={false}
         contentContainerStyle={{ paddingBottom: insets.bottom + 40 }}>
-        {/* Filter Pills */}
-        <View className="px-5 pt-4 pb-2 flex-row items-center justify-between">
-          <View className="flex-row gap-2">
+        {/* Filter Pills & Actions Toolbar */}
+        <View className="px-5 pt-3.5 pb-2 flex-row items-center justify-between">
+          <View className="flex-row gap-1.5">
             {[
               { id: 'all', label: 'All' },
               { id: 'alerts', label: 'Queue Alerts' },
@@ -188,13 +178,13 @@ export default function NotificationsScreen() {
                 <Pressable
                   key={tab.id}
                   onPress={() => setFilter(tab.id as any)}
-                  className={`px-3.5 py-1.5 rounded-full border ${
+                  className={`px-3 py-1.5 rounded-lg border ${
                     isSelected
                       ? 'bg-neutral-900 border-neutral-900'
-                      : 'bg-white border-neutral-200/80 active:bg-neutral-50'
+                      : 'bg-white border-neutral-200 active:bg-neutral-50'
                   }`}>
                   <Text
-                    className={`text-xs font-bold ${
+                    className={`text-xs font-semibold ${
                       isSelected ? 'text-white' : 'text-neutral-600'
                     }`}>
                     {tab.label}
@@ -204,33 +194,46 @@ export default function NotificationsScreen() {
             })}
           </View>
 
-          {notifications.length > 0 && (
-            <Pressable
-              onPress={clearAll}
-              className="flex-row items-center gap-1 active:opacity-60">
-              <Trash2Icon size={12} color="#71717a" />
-              <Text className="text-[11px] font-bold text-neutral-500">Clear</Text>
-            </Pressable>
-          )}
+          <View className="flex-row items-center gap-3">
+            {unreadCount > 0 && (
+              <Pressable
+                onPress={markAllAsRead}
+                hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}>
+                <Text className="text-xs font-semibold text-neutral-700 active:text-neutral-900">
+                  Mark all read
+                </Text>
+              </Pressable>
+            )}
+
+            {notifications.length > 0 && (
+              <Pressable
+                onPress={clearAll}
+                hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
+                className="flex-row items-center gap-1 active:opacity-60">
+                <Trash2Icon size={12} color="#71717a" />
+                <Text className="text-xs font-semibold text-neutral-500">Clear</Text>
+              </Pressable>
+            )}
+          </View>
         </View>
 
         {/* Notifications List */}
         <View className="px-5 pt-2">
           {filteredNotifications.length === 0 ? (
             /* Empty State */
-            <View className="bg-white rounded-3xl p-8 border border-neutral-100 shadow-sm items-center my-6">
-              <View className="size-16 rounded-full bg-neutral-100 items-center justify-center mb-3">
-                <BellOffIcon size={28} color="#71717a" />
+            <View className="bg-white rounded-xl p-8 border border-neutral-200/80 shadow-xs items-center my-6">
+              <View className="size-12 rounded-lg bg-neutral-100 items-center justify-center mb-3">
+                <BellOffIcon size={24} color="#71717a" />
               </View>
               <Text className="text-base font-bold text-neutral-900 text-center">
-                All Caught Up!
+                All Caught Up
               </Text>
               <Text className="text-xs text-neutral-500 text-center mt-1 max-w-[240px]">
-                You have no unread queue alerts or notifications right now.
+                You have no active queue alerts or notifications right now.
               </Text>
               <Pressable
                 onPress={() => router.push('/explore')}
-                className="mt-5 px-5 py-2.5 rounded-xl bg-[#dc2626] active:bg-[#b91c1c]">
+                className="mt-4 px-4 py-2 rounded-lg bg-[#dc2626] active:bg-[#b91c1c]">
                 <Text className="text-xs font-bold text-white">Find a Restaurant</Text>
               </Pressable>
             </View>
@@ -242,17 +245,17 @@ export default function NotificationsScreen() {
                 <Pressable
                   key={item.id}
                   onPress={() => handleNotificationPress(item)}
-                  className={`rounded-3xl p-4 border mb-3 active:opacity-90 ${
+                  className={`rounded-xl p-3.5 border mb-2.5 active:opacity-85 ${
                     !item.read
                       ? isAlert
-                        ? 'bg-red-50/50 border-red-200 shadow-sm'
-                        : 'bg-white border-neutral-300 shadow-sm'
-                      : 'bg-white border-neutral-100'
+                        ? 'bg-red-50/40 border-red-200 shadow-xs'
+                        : 'bg-white border-neutral-300 shadow-xs'
+                      : 'bg-white border-neutral-200/70'
                   }`}>
                   <View className="flex-row items-start gap-3">
                     {/* Notification Type Icon */}
                     <View
-                      className={`size-10 rounded-2xl items-center justify-center ${
+                      className={`size-9 rounded-lg items-center justify-center ${
                         item.type === 'table_ready'
                           ? 'bg-red-100'
                           : item.type === 'nearly_up'
@@ -261,41 +264,43 @@ export default function NotificationsScreen() {
                           ? 'bg-emerald-100'
                           : 'bg-neutral-100'
                       }`}>
-                      {item.type === 'table_ready' && <UtensilsCrossedIcon size={18} color="#dc2626" />}
-                      {item.type === 'nearly_up' && <ClockIcon size={18} color="#ea580c" />}
-                      {item.type === 'position_update' && <CheckCircle2Icon size={18} color="#059669" />}
-                      {item.type === 'queue_joined' && <BellIcon size={18} color="#18181b" />}
-                      {item.type === 'promo' && <SparklesIcon size={18} color="#b45309" />}
+                      {item.type === 'table_ready' && <UtensilsCrossedIcon size={17} color="#dc2626" />}
+                      {item.type === 'nearly_up' && <ClockIcon size={17} color="#ea580c" />}
+                      {item.type === 'position_update' && <CheckCircle2Icon size={17} color="#059669" />}
+                      {item.type === 'queue_joined' && <BellIcon size={17} color="#18181b" />}
+                      {item.type === 'promo' && <SparklesIcon size={17} color="#b45309" />}
                     </View>
 
                     {/* Content */}
                     <View className="flex-1">
                       <View className="flex-row items-center justify-between">
-                        <Text
-                          className={`text-xs font-bold ${
-                            !item.read ? 'text-neutral-900' : 'text-neutral-700'
-                          }`}>
-                          {item.title}
-                        </Text>
-                        <Text className="text-[10px] text-neutral-400">{item.time}</Text>
+                        <View className="flex-row items-center gap-1.5 flex-1 pr-2">
+                          {!item.read && (
+                            <View className="size-1.5 rounded-full bg-[#dc2626]" />
+                          )}
+                          <Text
+                            className={`text-[13px] font-bold ${
+                              !item.read ? 'text-neutral-900' : 'text-neutral-700'
+                            }`}
+                            numberOfLines={1}>
+                            {item.title}
+                          </Text>
+                        </View>
+                        <Text className="text-[11px] text-neutral-400 font-medium">{item.time}</Text>
                       </View>
 
-                      <Text className="text-xs text-neutral-600 mt-1 leading-relaxed">
+                      <Text className="text-xs text-neutral-600 mt-1 leading-[18px]">
                         {item.body}
                       </Text>
 
-                      {/* Action Pill */}
-                      <View className="flex-row items-center justify-between mt-3 pt-2 border-t border-neutral-100">
+                      {/* Action Link */}
+                      <View className="flex-row items-center justify-between mt-2.5 pt-2 border-t border-neutral-100">
                         <View className="flex-row items-center gap-1">
-                          <Text className="text-[11px] font-bold text-[#dc2626]">
+                          <Text className="text-xs font-semibold text-[#dc2626]">
                             {item.actionLabel}
                           </Text>
                           <ChevronRightIcon size={12} color="#dc2626" />
                         </View>
-
-                        {!item.read && (
-                          <View className="size-2 rounded-full bg-[#dc2626]" />
-                        )}
                       </View>
                     </View>
                   </View>

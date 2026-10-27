@@ -44,7 +44,7 @@ export default function OrderConfirmationScreen() {
       <View
         className="px-5 pb-3 bg-white border-b border-neutral-100 flex-row items-center justify-between"
         style={{ paddingTop: insets.top + 8 }}>
-        <Text className="text-xl font-black text-neutral-900 tracking-tight">
+        <Text className="text-xl font-bold text-neutral-900 tracking-tight">
           Order Confirmed
         </Text>
 
@@ -60,7 +60,7 @@ export default function OrderConfirmationScreen() {
             <CheckCircle2Icon size={44} color="#059669" />
           </View>
 
-          <Text className="text-2xl font-black text-neutral-900 tracking-tight text-center">
+          <Text className="text-2xl font-bold text-neutral-900 tracking-tight text-center">
             Pre-Order Confirmed!
           </Text>
 
@@ -69,15 +69,15 @@ export default function OrderConfirmationScreen() {
           </Text>
 
           {/* Ticket Information Card */}
-          <View className="w-full bg-white rounded-3xl p-5 border border-neutral-100 shadow-sm mt-5 mb-4">
+          <View className="w-full bg-white rounded-xl p-5 border border-neutral-100 shadow-sm mt-5 mb-4">
             <View className="flex-row items-center justify-between pb-3 border-b border-neutral-100">
               <View>
                 <Text className="text-[10px] font-semibold text-neutral-400">Order Reference</Text>
-                <Text className="text-base font-black text-neutral-900">QB-ORD-9281</Text>
+                <Text className="text-base font-bold text-neutral-900">QB-ORD-9281</Text>
               </View>
               <View className="items-end">
                 <Text className="text-[10px] font-semibold text-neutral-400">Linked Queue</Text>
-                <Text className="text-sm font-black text-[#dc2626]">Token #A12 (Spot #5)</Text>
+                <Text className="text-sm font-bold text-[#dc2626]">Token #A12 (Spot #5)</Text>
               </View>
             </View>
 
@@ -141,7 +141,7 @@ export default function OrderConfirmationScreen() {
           </View>
 
           {/* Ordered Dishes Summary */}
-          <View className="w-full bg-white rounded-3xl p-5 border border-neutral-100 shadow-sm mb-4">
+          <View className="w-full bg-white rounded-xl p-5 border border-neutral-100 shadow-sm mb-4">
             <Text className="text-xs font-bold text-neutral-900 mb-2">Order Items</Text>
             {items.map((item) => (
               <View

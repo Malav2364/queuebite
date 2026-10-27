@@ -243,7 +243,7 @@ export default function HomeScreen() {
         onNotificationPress={() => {
           router.push('/notifications');
         }}
-        onProfilePress={() => setActiveTab('PROFILE')}
+        onProfilePress={() => router.push('/profile/overview')}
         hasUnreadNotifications={true}
       />
 
@@ -330,11 +330,16 @@ export default function HomeScreen() {
           </View>
         ) : (
           <View>
-            {/* 4. Hero Promo Banner: Skip the wait */}
+            {/* 4. End-to-End Featured Restaurants Carousel */}
             <HeroPromoBanner
               onExplorePress={() => {
-                // Focus on shortest wait
                 handleToggleFilter('SHORTEST_WAIT');
+              }}
+              onRestaurantPress={(restaurantId) => {
+                router.push({
+                  pathname: '/restaurant/[id]',
+                  params: { id: restaurantId },
+                });
               }}
             />
 
@@ -375,7 +380,7 @@ export default function HomeScreen() {
             </View>
 
             {filteredRestaurants.length === 0 ? (
-              <View className="py-12 items-center justify-center bg-neutral-50 rounded-3xl p-6 border border-neutral-200">
+              <View className="py-12 items-center justify-center bg-neutral-50 rounded-xl p-6 border border-neutral-200">
                 <MapPinOffIcon size={36} color="#9ca3af" />
                 <Text className="text-base font-bold text-neutral-800 mt-3 text-center">
                   No matching restaurants found
@@ -419,11 +424,11 @@ export default function HomeScreen() {
 
             {/* Group Dining Feature Card */}
             <View className="px-5 my-3">
-              <View className="bg-gradient-to-r from-red-600 to-rose-700 bg-[#dc2626] rounded-3xl p-5 shadow-md shadow-red-500/20">
+              <View className="bg-gradient-to-r from-red-600 to-rose-700 bg-[#dc2626] rounded-xl p-5 shadow-md shadow-red-500/20">
                 <View className="flex-row items-center justify-between mb-2">
                   <View className="flex-row items-center gap-2">
                     <UsersIcon size={18} color="#ffffff" />
-                    <Text className="text-xs font-black text-white uppercase tracking-wider">
+                    <Text className="text-xs font-bold text-white uppercase tracking-wider">
                       Group Dining Mode
                     </Text>
                   </View>
@@ -432,7 +437,7 @@ export default function HomeScreen() {
                   </View>
                 </View>
 
-                <Text className="text-lg font-black text-white tracking-tight">
+                <Text className="text-lg font-bold text-white tracking-tight">
                   Dining out with friends or family?
                 </Text>
                 <Text className="text-xs text-red-100 mt-0.5 leading-relaxed">
@@ -443,13 +448,13 @@ export default function HomeScreen() {
                   <Pressable
                     onPress={() => router.push('/group/create')}
                     className="flex-1 py-2.5 rounded-xl bg-white items-center justify-center active:bg-neutral-100">
-                    <Text className="text-xs font-black text-[#dc2626]">Create Group</Text>
+                    <Text className="text-xs font-bold text-[#dc2626]">Create Group</Text>
                   </Pressable>
 
                   <Pressable
                     onPress={() => router.push('/group/join')}
                     className="flex-1 py-2.5 rounded-xl bg-black/25 border border-white/30 items-center justify-center active:bg-black/40">
-                    <Text className="text-xs font-black text-white">Join via Code</Text>
+                    <Text className="text-xs font-bold text-white">Join via Code</Text>
                   </Pressable>
                 </View>
               </View>
@@ -553,10 +558,7 @@ export default function HomeScreen() {
           } else if (tab === 'SAVED') {
             router.push('/saved');
           } else if (tab === 'PROFILE') {
-            Alert.alert(
-              'Profile & Preferences',
-              `Signed in as ${user?.firstName || 'Malav'}.\nDefault party size: ${partySize}\nDietary preference: All cuisines`
-            );
+            router.push('/profile/overview');
           }
         }}
         hasActiveQueue={activeQueue !== null}

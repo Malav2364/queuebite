@@ -70,7 +70,7 @@ export default function GroupDetailsScreen() {
             <ArrowLeftIcon size={18} color="#18181b" />
           </Pressable>
           <View>
-            <Text className="text-xl font-black text-neutral-900 tracking-tight" numberOfLines={1}>
+            <Text className="text-xl font-bold text-neutral-900 tracking-tight" numberOfLines={1}>
               {group.name}
             </Text>
             <Text className="text-xs text-neutral-500 font-medium">
@@ -96,7 +96,7 @@ export default function GroupDetailsScreen() {
           {/* 1. Live Shared Waitlist Status Card */}
           <Pressable
             onPress={() => router.push('/group/queue')}
-            className="bg-[#dc2626] rounded-3xl p-5 mb-4 shadow-lg shadow-red-500/20 active:opacity-95">
+            className="bg-[#dc2626] rounded-xl p-5 mb-4 shadow-lg shadow-red-500/20 active:opacity-95">
             <View className="flex-row items-center justify-between pb-3 border-b border-red-500/40">
               <View className="flex-row items-center gap-2">
                 <View className="size-2 rounded-full bg-white animate-pulse" />
@@ -105,13 +105,13 @@ export default function GroupDetailsScreen() {
                 </Text>
               </View>
               <View className="px-2.5 py-0.5 rounded-full bg-white/20">
-                <Text className="text-xs font-black text-white">Token #{group.queueToken}</Text>
+                <Text className="text-xs font-bold text-white">Token #{group.queueToken}</Text>
               </View>
             </View>
 
             <View className="pt-3 flex-row items-center justify-between">
               <View>
-                <Text className="text-3xl font-black text-white tracking-tight">
+                <Text className="text-3xl font-bold text-white tracking-tight">
                   Spot #{group.queuePosition}
                 </Text>
                 <Text className="text-xs text-red-100 font-medium">
@@ -127,13 +127,13 @@ export default function GroupDetailsScreen() {
           </Pressable>
 
           {/* 2. Group Readiness Meter Card */}
-          <View className="bg-white rounded-3xl p-5 border border-neutral-100 shadow-sm mb-4">
+          <View className="bg-white rounded-xl p-5 border border-neutral-100 shadow-sm mb-4">
             <View className="flex-row items-center justify-between mb-2">
               <View className="flex-row items-center gap-2">
                 <ShieldCheckIcon size={16} color="#059669" />
                 <Text className="text-xs font-bold text-neutral-900">Group Arrival Readiness</Text>
               </View>
-              <Text className="text-xs font-black text-neutral-900">
+              <Text className="text-xs font-bold text-neutral-900">
                 {readyMembersCount}/{group.members.length} Present ({readinessPercent}%)
               </Text>
             </View>
@@ -159,7 +159,7 @@ export default function GroupDetailsScreen() {
           </View>
 
           {/* 3. Destination Restaurant Card */}
-          <View className="bg-white rounded-3xl p-4 border border-neutral-100 shadow-sm mb-4">
+          <View className="bg-white rounded-xl p-4 border border-neutral-100 shadow-sm mb-4">
             <View className="flex-row items-center gap-3">
               <Image
                 source={{ uri: group.restaurantImage }}
@@ -208,7 +208,7 @@ export default function GroupDetailsScreen() {
           </View>
 
           {/* 4. Group Members List */}
-          <View className="bg-white rounded-3xl p-5 border border-neutral-100 shadow-sm mb-4">
+          <View className="bg-white rounded-xl p-5 border border-neutral-100 shadow-sm mb-4">
             <View className="flex-row items-center justify-between mb-3">
               <View className="flex-row items-center gap-2">
                 <UsersIcon size={16} color="#dc2626" />

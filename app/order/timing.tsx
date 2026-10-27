@@ -82,7 +82,7 @@ export default function PreOrderTimingScreen() {
             <ArrowLeftIcon size={18} color="#18181b" />
           </Pressable>
           <View>
-            <Text className="text-xl font-black text-neutral-900 tracking-tight">
+            <Text className="text-xl font-bold text-neutral-900 tracking-tight">
               Kitchen Timing
             </Text>
             <Text className="text-xs text-neutral-500 font-medium">
@@ -99,7 +99,7 @@ export default function PreOrderTimingScreen() {
         contentContainerStyle={{ paddingBottom: insets.bottom + 110 }}>
         <View className="px-5 pt-4">
           {/* Smart Coordination Diagram Card */}
-          <View className="bg-white rounded-3xl p-5 border border-neutral-100 shadow-sm mb-4">
+          <View className="bg-white rounded-xl p-5 border border-neutral-100 shadow-sm mb-4">
             <View className="flex-row items-center gap-2 mb-2">
               <SparklesIcon size={16} color="#dc2626" />
               <Text className="text-xs font-bold text-neutral-900">
@@ -143,7 +143,7 @@ export default function PreOrderTimingScreen() {
           </View>
 
           {/* Timing Mode Options List */}
-          <View className="bg-white rounded-3xl p-5 border border-neutral-100 shadow-sm mb-4">
+          <View className="bg-white rounded-xl p-5 border border-neutral-100 shadow-sm mb-4">
             <Text className="text-xs font-bold text-neutral-900 mb-1">
               Select When to Start Cooking
             </Text>
@@ -166,7 +166,7 @@ export default function PreOrderTimingScreen() {
                     <View className="flex-row items-center justify-between mb-1.5">
                       <View className="flex-row items-center gap-2">
                         <Text
-                          className={`text-xs font-black ${
+                          className={`text-xs font-bold ${
                             isSelected ? 'text-[#dc2626]' : 'text-neutral-900'
                           }`}>
                           {opt.title}

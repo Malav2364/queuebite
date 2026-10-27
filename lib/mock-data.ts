@@ -192,6 +192,28 @@ export const MOCK_POPULAR_RESTAURANTS: Restaurant[] = [
     reviewCount: 2100,
     isFavorite: false,
   },
+  {
+    id: 'pop-4',
+    name: 'Little Italy Trattoria',
+    image: 'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?q=80&w=800&auto=format&fit=crop',
+    cuisine: 'Woodfired Pizza & Pasta',
+    categories: ['Pizza', 'Italian', 'Pasta'],
+    priceRange: '₹₹₹',
+    distance: '1.8 km',
+    travelTime: '~7 min drive',
+    waitRange: '15–20 min',
+    waitMinutesEstimated: 18,
+    waitLabel: 'Moderate',
+    queueState: 'OPEN',
+    minPartySize: 1,
+    maxPartySize: 8,
+    partiesInQueue: 3,
+    lastUpdated: '1 min ago',
+    address: 'Akota, Vadodara',
+    rating: 4.4,
+    reviewCount: 850,
+    isFavorite: false,
+  },
 ];
 
 export const MOCK_TRENDING_RESTAURANTS: Restaurant[] = [

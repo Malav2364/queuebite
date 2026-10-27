@@ -76,7 +76,10 @@ const MOCK_ORDER_HISTORY: PastOrder[] = [
     id: 'QB-ORD-6510',
     restaurantId: '4',
     restaurantName: 'Little Italy Trattoria',
-    restaurantImage: MOCK_POPULAR_RESTAURANTS[3].image,
+    restaurantImage:
+      MOCK_POPULAR_RESTAURANTS[3]?.image ||
+      MOCK_POPULAR_RESTAURANTS[0]?.image ||
+      'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?q=80&w=800&auto=format&fit=crop',
     date: 'Oct 12, 9:10 PM',
     itemsText: 'Four Cheese Ravioli, Tiramisu',
     total: 840,
@@ -119,7 +122,7 @@ export default function OrderHistoryScreen() {
             <ArrowLeftIcon size={18} color="#18181b" />
           </Pressable>
           <View>
-            <Text className="text-xl font-black text-neutral-900 tracking-tight">
+            <Text className="text-xl font-bold text-neutral-900 tracking-tight">
               Order History
             </Text>
             <Text className="text-xs text-neutral-500 font-medium">
@@ -180,7 +183,7 @@ export default function OrderHistoryScreen() {
         {/* Orders List */}
         <View className="px-5 pt-2">
           {filteredOrders.length === 0 ? (
-            <View className="bg-white rounded-3xl p-8 border border-neutral-100 shadow-sm items-center my-6">
+            <View className="bg-white rounded-xl p-8 border border-neutral-100 shadow-sm items-center my-6">
               <View className="size-16 rounded-full bg-neutral-100 items-center justify-center mb-3">
                 <ShoppingBagIcon size={28} color="#71717a" />
               </View>
@@ -199,7 +202,7 @@ export default function OrderHistoryScreen() {
               return (
                 <View
                   key={order.id}
-                  className="bg-white rounded-3xl p-4 border border-neutral-100 shadow-sm mb-3.5">
+                  className="bg-white rounded-xl p-4 border border-neutral-100 shadow-sm mb-3.5">
                   {/* Top Bar */}
                   <View className="flex-row items-center justify-between pb-3 border-b border-neutral-100">
                     <View className="flex-row items-center gap-3 flex-1 pr-2">
@@ -249,7 +252,7 @@ export default function OrderHistoryScreen() {
                       <Text className="text-[11px] text-neutral-400">
                         {order.itemCount} items
                       </Text>
-                      <Text className="text-sm font-black text-neutral-900">
+                      <Text className="text-sm font-bold text-neutral-900">
                         ₹{order.total}
                       </Text>
                     </View>

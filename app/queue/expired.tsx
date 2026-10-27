@@ -86,7 +86,7 @@ export default function QueueExpiredScreen() {
             <ArrowLeftIcon size={18} color="#18181b" />
           </Pressable>
           <View>
-            <Text className="text-xl font-black text-neutral-900 tracking-tight">
+            <Text className="text-xl font-bold text-neutral-900 tracking-tight">
               Hold Expired
             </Text>
             <Text className="text-xs text-neutral-500 font-medium">
@@ -113,7 +113,7 @@ export default function QueueExpiredScreen() {
             </Text>
           </View>
 
-          <Text className="text-2xl font-black text-neutral-900 text-center tracking-tight">
+          <Text className="text-2xl font-bold text-neutral-900 text-center tracking-tight">
             We Missed You!
           </Text>
 
@@ -123,7 +123,7 @@ export default function QueueExpiredScreen() {
           </Text>
 
           {/* Ticket Information Card */}
-          <View className="w-full bg-white rounded-3xl p-5 border border-neutral-100 shadow-sm mt-5 mb-4">
+          <View className="w-full bg-white rounded-xl p-5 border border-neutral-100 shadow-sm mt-5 mb-4">
             <View className="flex-row items-center gap-3 pb-3 border-b border-neutral-100">
               <Image
                 source={{ uri: restaurant.image }}
@@ -167,10 +167,10 @@ export default function QueueExpiredScreen() {
           </View>
 
           {/* Recovery Options Box */}
-          <View className="w-full bg-[#fef7f2] border border-orange-200/80 rounded-3xl p-5 mb-5">
+          <View className="w-full bg-[#fef7f2] border border-orange-200/80 rounded-xl p-5 mb-5">
             <View className="flex-row items-center gap-2 mb-2">
               <SparklesIcon size={16} color="#c2410c" />
-              <Text className="text-xs font-black text-orange-950 uppercase tracking-wide">
+              <Text className="text-xs font-bold text-orange-950 uppercase tracking-wide">
                 Recovery Options
               </Text>
             </View>

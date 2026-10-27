@@ -240,7 +240,7 @@ export default function TableReadyScreen() {
         </View>
 
         {/* 2. Restaurant Summary Card */}
-        <View className="mx-4 bg-white rounded-3xl p-3.5 shadow-sm border border-neutral-100 flex-row items-center justify-between mb-4">
+        <View className="mx-4 bg-white rounded-xl p-3.5 shadow-sm border border-neutral-100 flex-row items-center justify-between mb-4">
           <View className="flex-row items-center gap-3 flex-1 pr-2">
             <Image
               source={{ uri: restaurant.image }}
@@ -301,7 +301,7 @@ export default function TableReadyScreen() {
         </View>
 
         {/* 3. "Table Reserved" Countdown Card */}
-        <View className="mx-4 bg-[#fef7f2] border border-[#fcdbc7] rounded-3xl p-5 mb-4 shadow-xs flex-row items-center justify-between">
+        <View className="mx-4 bg-[#fef7f2] border border-[#fcdbc7] rounded-xl p-5 mb-4 shadow-xs flex-row items-center justify-between">
           {/* Left: Cozy Dining Table Illustration */}
           <View className="size-32 rounded-2xl overflow-hidden bg-[#faeee5] items-center justify-center p-2">
             <Image

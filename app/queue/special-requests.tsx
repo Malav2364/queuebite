@@ -96,7 +96,7 @@ export default function SpecialRequestsScreen() {
             <ArrowLeftIcon size={18} color="#18181b" />
           </Pressable>
           <View>
-            <Text className="text-xl font-black text-neutral-900 tracking-tight">
+            <Text className="text-xl font-bold text-neutral-900 tracking-tight">
               Special Requests
             </Text>
             <Text className="text-xs text-neutral-500 font-medium">
@@ -113,7 +113,7 @@ export default function SpecialRequestsScreen() {
         contentContainerStyle={{ paddingBottom: insets.bottom + 100 }}>
         <View className="px-5 pt-4">
           {/* Seating & Environment */}
-          <View className="bg-white rounded-3xl p-5 border border-neutral-100 shadow-sm mb-4">
+          <View className="bg-white rounded-xl p-5 border border-neutral-100 shadow-sm mb-4">
             <View className="flex-row items-center gap-2 mb-1">
               <SparklesIcon size={16} color="#dc2626" />
               <Text className="text-xs font-bold text-neutral-900">Seating & Atmosphere</Text>
@@ -156,7 +156,7 @@ export default function SpecialRequestsScreen() {
           </View>
 
           {/* Special Occasion */}
-          <View className="bg-white rounded-3xl p-5 border border-neutral-100 shadow-sm mb-4">
+          <View className="bg-white rounded-xl p-5 border border-neutral-100 shadow-sm mb-4">
             <View className="flex-row items-center gap-2 mb-1">
               <CakeIcon size={16} color="#dc2626" />
               <Text className="text-xs font-bold text-neutral-900">Special Occasion</Text>
@@ -197,7 +197,7 @@ export default function SpecialRequestsScreen() {
           </View>
 
           {/* Dietary & Kitchen Notes */}
-          <View className="bg-white rounded-3xl p-5 border border-neutral-100 shadow-sm mb-4">
+          <View className="bg-white rounded-xl p-5 border border-neutral-100 shadow-sm mb-4">
             <View className="flex-row items-center gap-2 mb-1">
               <ShieldAlertIcon size={16} color="#dc2626" />
               <Text className="text-xs font-bold text-neutral-900">Dietary & Allergies</Text>
@@ -240,7 +240,7 @@ export default function SpecialRequestsScreen() {
           </View>
 
           {/* Custom Note Input */}
-          <View className="bg-white rounded-3xl p-5 border border-neutral-100 shadow-sm mb-4">
+          <View className="bg-white rounded-xl p-5 border border-neutral-100 shadow-sm mb-4">
             <View className="flex-row items-center justify-between mb-1">
               <View className="flex-row items-center gap-2">
                 <Edit3Icon size={16} color="#dc2626" />
@@ -269,7 +269,7 @@ export default function SpecialRequestsScreen() {
           </View>
 
           {/* Arrival Notification Toggle */}
-          <View className="bg-white rounded-3xl p-5 border border-neutral-100 shadow-sm mb-4 flex-row items-center justify-between">
+          <View className="bg-white rounded-xl p-5 border border-neutral-100 shadow-sm mb-4 flex-row items-center justify-between">
             <View className="flex-1 pr-3">
               <Text className="text-xs font-bold text-neutral-900">
                 Notify Host Upon Arrival

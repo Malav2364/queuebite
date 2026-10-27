@@ -157,7 +157,7 @@ export default function JoinQueueScreen() {
         </View>
 
         {/* 2. Restaurant Summary Card (Overlapping) */}
-        <View className="-mt-7 mx-4 bg-white rounded-3xl p-3.5 shadow-sm border border-neutral-100 flex-row items-center justify-between">
+        <View className="-mt-7 mx-4 bg-white rounded-xl p-3.5 shadow-sm border border-neutral-100 flex-row items-center justify-between">
           {/* Left Thumbnail & Info */}
           <View className="flex-row items-center gap-3 flex-1 pr-2">
             <Image
@@ -233,7 +233,7 @@ export default function JoinQueueScreen() {
 
         {/* 4. Estimated Wait Time & Groups Ahead Card */}
         <View className="px-5 mb-5">
-          <View className="bg-[#fef7f2] border border-[#fbdcc8] rounded-3xl p-4 flex-row items-center justify-between shadow-xs">
+          <View className="bg-[#fef7f2] border border-[#fbdcc8] rounded-xl p-4 flex-row items-center justify-between shadow-xs">
             {/* Left Half: Estimated Wait */}
             <View className="flex-1 flex-row items-center gap-3">
               <View className="size-11 rounded-full bg-[#fee2e2] items-center justify-center">

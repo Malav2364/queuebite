@@ -67,7 +67,7 @@ export default function OrderReviewScreen() {
             <ArrowLeftIcon size={18} color="#18181b" />
           </Pressable>
           <View>
-            <Text className="text-xl font-black text-neutral-900 tracking-tight">
+            <Text className="text-xl font-bold text-neutral-900 tracking-tight">
               Order Review
             </Text>
             <Text className="text-xs text-neutral-500 font-medium">
@@ -84,7 +84,7 @@ export default function OrderReviewScreen() {
         contentContainerStyle={{ paddingBottom: insets.bottom + 110 }}>
         <View className="px-5 pt-4">
           {/* Restaurant & Queue Sync Card */}
-          <View className="bg-white rounded-3xl p-4 border border-neutral-100 shadow-sm mb-4">
+          <View className="bg-white rounded-xl p-4 border border-neutral-100 shadow-sm mb-4">
             <View className="flex-row items-center gap-3 pb-3 border-b border-neutral-100">
               <Image
                 source={{ uri: restaurant.image }}
@@ -104,7 +104,7 @@ export default function OrderReviewScreen() {
             <View className="pt-3 gap-2">
               <View className="flex-row items-center justify-between">
                 <Text className="text-xs text-neutral-500">Live Waitlist Token</Text>
-                <Text className="text-xs font-black text-neutral-900">#A12 (Spot #5)</Text>
+                <Text className="text-xs font-bold text-neutral-900">#A12 (Spot #5)</Text>
               </View>
 
               <View className="flex-row items-center justify-between">
@@ -122,7 +122,7 @@ export default function OrderReviewScreen() {
           </View>
 
           {/* Itemized Food List */}
-          <View className="bg-white rounded-3xl p-5 border border-neutral-100 shadow-sm mb-4">
+          <View className="bg-white rounded-xl p-5 border border-neutral-100 shadow-sm mb-4">
             <View className="flex-row items-center justify-between mb-3">
               <Text className="text-xs font-bold text-neutral-900">
                 Dishes in Order ({items.length})
@@ -172,7 +172,7 @@ export default function OrderReviewScreen() {
           </View>
 
           {/* Final Price Breakdown */}
-          <View className="bg-white rounded-3xl p-5 border border-neutral-100 shadow-sm mb-4">
+          <View className="bg-white rounded-xl p-5 border border-neutral-100 shadow-sm mb-4">
             <Text className="text-xs font-bold text-neutral-900 mb-3">Price Summary</Text>
 
             <View className="gap-2">
@@ -196,8 +196,8 @@ export default function OrderReviewScreen() {
               <View className="h-px bg-neutral-100 my-1" />
 
               <View className="flex-row items-center justify-between">
-                <Text className="text-sm font-black text-neutral-900">Total Payable</Text>
-                <Text className="text-lg font-black text-[#dc2626]">₹{grandTotal}</Text>
+                <Text className="text-sm font-bold text-neutral-900">Total Payable</Text>
+                <Text className="text-lg font-bold text-[#dc2626]">₹{grandTotal}</Text>
               </View>
             </View>
           </View>
@@ -212,7 +212,7 @@ export default function OrderReviewScreen() {
           <Text className="text-[10px] text-neutral-400 font-bold uppercase tracking-wider">
             Total Payable
           </Text>
-          <Text className="text-xl font-black text-neutral-900">₹{grandTotal}</Text>
+          <Text className="text-xl font-bold text-neutral-900">₹{grandTotal}</Text>
         </View>
 
         <Pressable

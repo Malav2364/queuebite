@@ -122,7 +122,7 @@ export function SignInForm() {
                     variant="link"
                     size="sm"
                     className="h-auto p-0">
-                    <Text className="text-xs font-semibold text-[#d94148]">Forgot your password?</Text>
+                    <Text className="text-xs font-semibold text-[#dc2626]">Forgot your password?</Text>
                   </Button>
                 </Link>
               </View>
@@ -157,7 +157,7 @@ export function SignInForm() {
           {/* Don't have an account? Sign up centered */}
           <Text className="text-center text-xs text-neutral-700">
             Don&apos;t have an account?{' '}
-            <Link href="/(auth)/sign-up" className="text-xs font-semibold text-[#d94148]">
+            <Link href="/(auth)/sign-up" className="text-xs font-semibold text-[#dc2626]">
               Sign up
             </Link>
           </Text>

@@ -139,7 +139,7 @@ export default function FullMenuPreOrderScreen() {
             <ArrowLeftIcon size={18} color="#18181b" />
           </Pressable>
           <View>
-            <Text className="text-xl font-black text-neutral-900 tracking-tight">
+            <Text className="text-xl font-bold text-neutral-900 tracking-tight">
               Pre-Order Food
             </Text>
             <Text className="text-xs text-neutral-500 font-medium">
@@ -226,7 +226,7 @@ export default function FullMenuPreOrderScreen() {
           {filteredDishes.map((dish) => (
             <View
               key={dish.id}
-              className="bg-white rounded-3xl p-4 border border-neutral-100 shadow-sm flex-row items-start justify-between">
+              className="bg-white rounded-xl p-4 border border-neutral-100 shadow-sm flex-row items-start justify-between">
               <View className="flex-1 pr-3">
                 <View className="flex-row items-center gap-2 mb-1">
                   <View className="size-3.5 rounded-sm border border-emerald-600 items-center justify-center p-0.5">
@@ -241,7 +241,7 @@ export default function FullMenuPreOrderScreen() {
                 </View>
 
                 <Text className="text-base font-bold text-neutral-900">{dish.name}</Text>
-                <Text className="text-sm font-black text-neutral-900 my-0.5">₹{dish.price}</Text>
+                <Text className="text-sm font-bold text-neutral-900 my-0.5">₹{dish.price}</Text>
                 <Text className="text-xs text-neutral-500 leading-relaxed" numberOfLines={2}>
                   {dish.description}
                 </Text>
@@ -264,7 +264,7 @@ export default function FullMenuPreOrderScreen() {
                   onPress={() => handleAddDish(dish)}
                   className="absolute -bottom-2 bg-white px-4 py-1.5 rounded-xl border border-red-200 shadow-md flex-row items-center gap-1 active:bg-red-50">
                   <PlusIcon size={12} color="#dc2626" strokeWidth={3} />
-                  <Text className="text-xs font-black text-[#dc2626]">ADD</Text>
+                  <Text className="text-xs font-bold text-[#dc2626]">ADD</Text>
                 </Pressable>
               </View>
             </View>
@@ -288,7 +288,7 @@ export default function FullMenuPreOrderScreen() {
                 <Text className="text-xs font-bold text-white">
                   {cartTotalItems} {cartTotalItems === 1 ? 'Item' : 'Items'} Added
                 </Text>
-                <Text className="text-sm font-black text-white">₹{cartSubtotal}</Text>
+                <Text className="text-sm font-bold text-white">₹{cartSubtotal}</Text>
               </View>
             </View>
 

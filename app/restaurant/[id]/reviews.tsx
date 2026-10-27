@@ -115,7 +115,7 @@ export default function RestaurantReviewsScreen() {
             <ArrowLeftIcon size={18} color="#18181b" />
           </Pressable>
           <View>
-            <Text className="text-xl font-black text-neutral-900 tracking-tight" numberOfLines={1}>
+            <Text className="text-xl font-bold text-neutral-900 tracking-tight" numberOfLines={1}>
               {restaurant.name}
             </Text>
             <Text className="text-xs text-neutral-500 font-medium">Customer Reviews & Ratings</Text>
@@ -129,11 +129,11 @@ export default function RestaurantReviewsScreen() {
         showsVerticalScrollIndicator={false}
         contentContainerStyle={{ paddingBottom: insets.bottom + 90 }}>
         {/* 1. Rating Overview Card */}
-        <View className="m-4 bg-white rounded-3xl p-5 border border-neutral-100 shadow-sm">
+        <View className="m-4 bg-white rounded-xl p-5 border border-neutral-100 shadow-sm">
           <View className="flex-row items-center justify-between">
             {/* Big Score */}
             <View className="items-center pr-4 border-r border-neutral-100">
-              <Text className="text-4xl font-black text-neutral-900">
+              <Text className="text-4xl font-bold text-neutral-900">
                 {restaurant.rating.toFixed(1)}
               </Text>
               <View className="flex-row items-center gap-0.5 mt-1">
@@ -213,7 +213,7 @@ export default function RestaurantReviewsScreen() {
           {reviewsList.map((rev) => (
             <View
               key={rev.id}
-              className="bg-white rounded-3xl p-4 border border-neutral-100 shadow-xs">
+              className="bg-white rounded-xl p-4 border border-neutral-100 shadow-xs">
               {/* User row */}
               <View className="flex-row items-center justify-between mb-2.5">
                 <View className="flex-row items-center gap-2.5">

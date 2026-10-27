@@ -146,7 +146,7 @@ export default function GroupVisitHistoryScreen() {
             <ArrowLeftIcon size={18} color="#18181b" />
           </Pressable>
           <View>
-            <Text className="text-xl font-black text-neutral-900 tracking-tight">
+            <Text className="text-xl font-bold text-neutral-900 tracking-tight">
               Group Outings
             </Text>
             <Text className="text-xs text-neutral-500 font-medium">
@@ -177,7 +177,7 @@ export default function GroupVisitHistoryScreen() {
           {/* Visits List */}
           <View className="gap-3.5">
             {filteredVisits.length === 0 ? (
-              <View className="bg-white rounded-3xl p-8 border border-neutral-100 shadow-sm items-center my-6">
+              <View className="bg-white rounded-xl p-8 border border-neutral-100 shadow-sm items-center my-6">
                 <View className="size-16 rounded-full bg-neutral-100 items-center justify-center mb-3">
                   <UsersIcon size={28} color="#71717a" />
                 </View>
@@ -192,7 +192,7 @@ export default function GroupVisitHistoryScreen() {
               filteredVisits.map((visit) => (
                 <View
                   key={visit.id}
-                  className="bg-white rounded-3xl p-4 border border-neutral-100 shadow-sm">
+                  className="bg-white rounded-xl p-4 border border-neutral-100 shadow-sm">
                   {/* Top Bar: Group Name & Restaurant */}
                   <View className="flex-row items-center justify-between pb-3 border-b border-neutral-100">
                     <View className="flex-row items-center gap-3 flex-1 pr-2">
@@ -202,7 +202,7 @@ export default function GroupVisitHistoryScreen() {
                         resizeMode="cover"
                       />
                       <View className="flex-1">
-                        <Text className="text-sm font-black text-neutral-900" numberOfLines={1}>
+                        <Text className="text-sm font-bold text-neutral-900" numberOfLines={1}>
                           {visit.groupName}
                         </Text>
                         <Text className="text-xs text-neutral-500 mt-0.5">

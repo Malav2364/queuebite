@@ -71,7 +71,7 @@ export function FilterBar({
           onPress={() => onToggleFilter('OPEN_NOW')}
           className={`flex-row items-center gap-1.5 px-3 py-1.5 rounded-full border ${
             activeFilters.has('OPEN_NOW')
-              ? 'bg-[#d94148] border-[#d94148]'
+              ? 'bg-[#dc2626] border-[#dc2626]'
               : 'bg-white border-neutral-200'
           }`}>
           <FlameIcon
@@ -91,7 +91,7 @@ export function FilterBar({
           onPress={() => onToggleFilter('SHORTEST_WAIT')}
           className={`flex-row items-center gap-1.5 px-3 py-1.5 rounded-full border ${
             activeFilters.has('SHORTEST_WAIT')
-              ? 'bg-[#d94148] border-[#d94148]'
+              ? 'bg-[#dc2626] border-[#dc2626]'
               : 'bg-white border-neutral-200'
           }`}>
           <ClockIcon
@@ -111,7 +111,7 @@ export function FilterBar({
           onPress={() => onToggleFilter('FITS_PARTY')}
           className={`flex-row items-center gap-1.5 px-3 py-1.5 rounded-full border ${
             activeFilters.has('FITS_PARTY')
-              ? 'bg-[#d94148] border-[#d94148]'
+              ? 'bg-[#dc2626] border-[#dc2626]'
               : 'bg-white border-neutral-200'
           }`}>
           <UsersIcon
@@ -131,7 +131,7 @@ export function FilterBar({
           onPress={() => onToggleFilter('FAVORITES')}
           className={`flex-row items-center gap-1.5 px-3 py-1.5 rounded-full border ${
             activeFilters.has('FAVORITES')
-              ? 'bg-[#d94148] border-[#d94148]'
+              ? 'bg-[#dc2626] border-[#dc2626]'
               : 'bg-white border-neutral-200'
           }`}>
           <HeartIcon
